@@ -4,8 +4,8 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import Navbar from './components/navbar/Navbar'
 import Products from './components/products/Products'
-// import { ButtonPremium, ButtonCircle, ButtonRectangle } from './components/buttons/Buttons';
-import * as CustomButtons from './components/buttons/Buttons'
+import { ButtonPremium, ButtonCircle, ButtonRectangle } from './components/buttons/Buttons';
+// import * as CustomButtons from './components/buttons/Buttons'
 import './App.css'
 
 function App() {
@@ -37,10 +37,17 @@ function App() {
     <>
       <Navbar />
       <Products />
+
       <div>
-        <CustomButtons.ButtonPremium/>
-        <CustomButtons.ButtonRectangle/>
-        <CustomButtons.ButtonCircle/>
+        <ButtonPremium text="Підтримати"/>
+
+        <ButtonRectangle>
+          Натисни на мене
+        </ButtonRectangle>
+
+        <ButtonCircle>
+          X
+        </ButtonCircle>
       </div>
     </>
   )

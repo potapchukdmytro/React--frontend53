@@ -1,19 +1,21 @@
 import "./Buttons.css";
 
-export function ButtonCircle() {
+// children - зарезервоване слово. Приймає елементи які знаходяться між тегами
+
+export function ButtonCircle({children}) {
     return (
-        <button className="btn-circle">O</button>
+        <button className="btn-circle">{children}</button>
     )
 }
 
-export function ButtonRectangle() {
+export function ButtonRectangle({children}) {
     return (
-        <button className="btn-rectangle">Rectangle</button>
+        <button className="btn-rectangle">{children}</button>
     )
 }
 
-export function ButtonPremium() {
+export function ButtonPremium({text}) {
     return (
-        <button className="btn-premium">Premium</button>
+        <button className="btn-premium">{text}</button>
     )
 }

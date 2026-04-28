@@ -195,6 +195,12 @@
   margin: 20px;
 }
 
+.product-card-image {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+
 .products-container {
   display: flex;
   margin: 20px 0px;

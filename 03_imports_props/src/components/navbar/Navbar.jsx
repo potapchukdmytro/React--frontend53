@@ -7,7 +7,7 @@ function Navbar() {
             <a>Catalog</a>
             <a>About</a>
             <a>Contacts</a>
-            <ButtonPremium />
+            <ButtonPremium text="Підписка" />
         </div>
     )
 }
