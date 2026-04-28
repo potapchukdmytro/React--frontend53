@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import Navbar from './components/navbar/Navbar'
 import Products from './components/products/Products'
 import { ButtonPremium, ButtonCircle, ButtonRectangle } from './components/buttons/Buttons';
+import pi, {pow, factorial} from './tools/math'
 // import * as CustomButtons from './components/buttons/Buttons'
 import './App.css'
 
@@ -31,6 +32,13 @@ function App() {
   // console.log(second);
 
   // console.log("Hello world");
+
+  const power = pow(5, 3);
+  const fact = factorial(4);
+  console.log(power);
+  console.log(fact);
+  console.log(pi());
+  
   
 
   return (
