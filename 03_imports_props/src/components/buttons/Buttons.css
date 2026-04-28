@@ -1,0 +1,20 @@
+.btn-circle {
+    border-radius: 50%;
+    background-color: silver;
+    color: black;
+}
+
+.btn-rectangle {
+    border-radius: 5px;
+    background-color: silver;
+    color: black;
+}
+
+.btn-premium {
+    background-color: goldenrod;
+    color: black;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-color: silver;
+}
