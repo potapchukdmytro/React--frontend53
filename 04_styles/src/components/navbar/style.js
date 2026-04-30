@@ -1,5 +1,6 @@
 export const linkStyle = {
     margin: "0px 15px",
+    textDecoration: "none"
 };
 
 export const navbarStyle = {

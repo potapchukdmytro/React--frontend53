@@ -1,3 +1,7 @@
+.nav-link {
+    color: #9ca3af;
+}
+
 .nav-link:hover {
     cursor: pointer;
     color: white;

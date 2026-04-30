@@ -5,10 +5,10 @@ function Navbar() {
     return (
         <div style={navbarStyle}>
             <div style={{ display: "flex", width: "75%" }}>
-                <a className="nav-link" style={linkStyle}>Головна</a>
-                <a className="nav-link" style={linkStyle}>Каталог</a>
-                <a className="nav-link" style={linkStyle}>Про нас</a>
-                <a className="nav-link" style={linkStyle}>Контакти</a>
+                <a href="/" className="nav-link" style={linkStyle}>Головна</a>
+                <a href="/catalog" className="nav-link" style={linkStyle}>Каталог</a>
+                <a href="/about" className="nav-link" style={linkStyle}>Про нас</a>
+                <a href="/contacts" className="nav-link" style={linkStyle}>Контакти</a>
             </div>
             <div
                 style={{
@@ -17,8 +17,8 @@ function Navbar() {
                     width: "25%",
                 }}
             >
-                <a className="nav-link">Увійти</a>
-                <a className="nav-link">Зареєструватися</a>
+                <a href="/login" style={linkStyle} className="nav-link">Увійти</a>
+                <a href="/register" style={linkStyle} className="nav-link">Зареєструватися</a>
             </div>
         </div>
     );
