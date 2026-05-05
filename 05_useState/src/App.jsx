@@ -3,7 +3,7 @@ import Navbar from "./components/navbar/Navbar";
 import ColoredBox from "./components/coloredBox/ColoredBox";
 
 function App() {
-    console.log("Component render");
+    console.log("App render");
 
     return (
         <>

@@ -1,12 +1,21 @@
+import { useState } from "react";
 import { Button } from "@mui/material";
 
 function ColoredBox() {
-    let boxColor = "lightCoral";
+    // useState - повертає масив в якому 2 елементи
+    // Перший це константа із значенням
+    // Другий це функція для зміни значення константи
+    const [boxColor, setBoxColor] = useState("lightCoral");
+    console.log("Box render");
 
     function handleChangeColor() {
-        boxColor = "red";
+        const r = Math.floor(Math.random() * 256)
+        const g = Math.floor(Math.random() * 256)
+        const b = Math.floor(Math.random() * 256)
+
+        setBoxColor(`rgb(${r}, ${g}, ${b})`);
     }
-    
+
     return (
         <div
             style={{
@@ -25,7 +34,11 @@ function ColoredBox() {
                 }}
             ></div>
             <div style={{ margin: "20px 0px" }}>
-                <Button onClick={handleChangeColor} variant="contained" color="secondary">
+                <Button
+                    onClick={handleChangeColor}
+                    variant="contained"
+                    color="secondary"
+                >
                     Change color
                 </Button>
             </div>
