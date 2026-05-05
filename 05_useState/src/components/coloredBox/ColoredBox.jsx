@@ -1,12 +1,23 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 function ColoredBox() {
     // useState - повертає масив в якому 2 елементи
     // Перший це константа із значенням
     // Другий це функція для зміни значення константи
     const [boxColor, setBoxColor] = useState("lightCoral");
+    const [boxWidth, setBoxWidth] = useState(200);
     console.log("Box render");
+
+    function addWidth() {
+        setBoxWidth((prev) => prev + 10);
+    }
+
+    function reduceWidth() {
+        setBoxWidth((prev) => prev <= 10 ? prev : prev - 10);
+    }
 
     function handleChangeColor() {
         const r = Math.floor(Math.random() * 256)
@@ -28,12 +39,15 @@ function ColoredBox() {
             <div
                 style={{
                     display: "inline-block",
-                    width: "200px",
+                    width: `${boxWidth}px`,
                     height: "200px",
                     backgroundColor: boxColor,
                 }}
             ></div>
             <div style={{ margin: "20px 0px" }}>
+                <IconButton onClick={reduceWidth}>
+                    <RemoveCircleIcon/>
+                </IconButton>
                 <Button
                     onClick={handleChangeColor}
                     variant="contained"
@@ -41,6 +55,9 @@ function ColoredBox() {
                 >
                     Change color
                 </Button>
+                <IconButton onClick={addWidth}>
+                    <AddCircleIcon/>
+                </IconButton>
             </div>
         </div>
     );
