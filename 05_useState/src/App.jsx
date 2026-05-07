@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from "./theming/themes";
 import Counter from "./components/counter/Counter";
 import CounterRef from "./components/counter/CounterRef";
 import DynamicTitle from "./components/dynamicTitle/DynamicTitle";
+import PersonInfo from "./components/personInfo/PersonInfo";
 
 function App() {
     const [isDark, setIsDark] = useState(false);
@@ -22,7 +23,8 @@ function App() {
             {/* <ColoredBox /> */}
             {/* <Counter/> */}
             {/* <CounterRef /> */}
-            <DynamicTitle/>
+            {/* <DynamicTitle/> */}
+            <PersonInfo/>
         </ThemeProvider>
     );
 }
