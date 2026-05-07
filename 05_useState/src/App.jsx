@@ -2,18 +2,14 @@ import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import { useState } from "react";
 import ColoredBox from "./components/coloredBox/ColoredBox";
-import { Button, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-
-const lightTheme = createTheme();
-const darkTheme = createTheme({
-    palette: {
-        mode: "dark",
-    },
-});
+import { Button, CssBaseline, ThemeProvider } from "@mui/material";
+import { lightTheme, darkTheme } from "./theming/themes";
+import Counter from "./components/counter/Counter";
+import CounterRef from "./components/counter/CounterRef";
+import DynamicTitle from "./components/dynamicTitle/DynamicTitle";
 
 function App() {
     const [isDark, setIsDark] = useState(false);
-    console.log("App render");
 
     function changeTheme() {
         setIsDark((prev) => !prev);
@@ -23,7 +19,10 @@ function App() {
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <CssBaseline />
             <Navbar switchTheme={changeTheme} isDark={isDark} />
-            <ColoredBox />
+            {/* <ColoredBox /> */}
+            {/* <Counter/> */}
+            {/* <CounterRef /> */}
+            <DynamicTitle/>
         </ThemeProvider>
     );
 }

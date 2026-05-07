@@ -9,11 +9,9 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 function Navbar({switchTheme, isDark}) {
-    console.log("Navbar render");
-
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" color="primary" enableColorOnDark>
                 <Toolbar>
                     <IconButton
                         size="large"
