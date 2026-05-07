@@ -15,8 +15,6 @@ function App() {
     const [isDark, setIsDark] = useState(false);
     console.log("App render");
 
-    const btnThemeText = `Включити ${isDark ? "світлу" : "темну"} тему`;
-
     function changeTheme() {
         setIsDark((prev) => !prev);
     }
@@ -24,13 +22,8 @@ function App() {
     return (
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <CssBaseline />
-            <Navbar />
+            <Navbar switchTheme={changeTheme} isDark={isDark} />
             <ColoredBox />
-            <div style={{ textAlign: "center" }}>
-                <Button color={isDark ? "success" : "info"} onClick={changeTheme} variant="contained">
-                    {btnThemeText}
-                </Button>
-            </div>
         </ThemeProvider>
     );
 }

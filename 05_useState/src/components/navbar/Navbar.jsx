@@ -5,8 +5,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
-function Navbar() {
+function Navbar({switchTheme, isDark}) {
     console.log("Navbar render");
 
     return (
@@ -29,6 +31,9 @@ function Navbar() {
                     >
                         News
                     </Typography>
+                    <IconButton onClick={switchTheme}>
+                        { isDark ? <LightModeIcon/> : <DarkModeIcon style={{color: "white"}}/> }
+                    </IconButton>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
