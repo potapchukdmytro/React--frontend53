@@ -2,7 +2,7 @@ import { Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import "./BookCard.css";
 
-function BookCard() {
+function BookCard({book}) {
     return (
         <div
             className="book-card-hover"
@@ -17,14 +17,14 @@ function BookCard() {
                 <img
                     height="300px"
                     width="100%"
-                    src="https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg"
-                    alt="Atomic Habits"
+                    src={book.cover}
+                    alt={book.title}
                     style={{ objectFit: "contain" }}
                 />
             </div>
             <div>
                 <Rating
-                    defaultValue={2}
+                    value={book.rating}
                     precision={0.5}
                     max={5}
                     readOnly
@@ -54,10 +54,10 @@ function BookCard() {
                     textOverflow: "ellipsis",
                 }}
             >
-                Atomic Habits
+                {book.title}
             </div>
             <div style={{ textAlign: "start", fontSize: "0.7em" }}>
-                James Clear
+                {book.author}
             </div>
             <div
                 style={{
@@ -67,7 +67,7 @@ function BookCard() {
                     fontSize: "1.4em",
                 }}
             >
-                $18.99
+                ${book.price}
             </div>
         </div>
     );
