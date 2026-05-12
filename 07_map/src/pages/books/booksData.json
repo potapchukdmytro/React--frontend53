@@ -1,0 +1,366 @@
+[
+  {
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg",
+    "price": "18.99",
+    "rating": 4.9
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg",
+    "price": "12.50",
+    "rating": 4.7
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71kxa1-0mfL.jpg",
+    "price": "10.99",
+    "rating": 4.8
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81Otwki3LjL.jpg",
+    "price": "14.20",
+    "rating": 4.9
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81af+MCATTL.jpg",
+    "price": "11.30",
+    "rating": 4.6
+  },
+  {
+    "title": "Rich Dad Poor Dad",
+    "author": "Robert Kiyosaki",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg",
+    "price": "16.80",
+    "rating": 4.8
+  },
+  {
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71QKQ9mwV7L.jpg",
+    "price": "17.40",
+    "rating": 4.7
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/41SH-SvWPxL.jpg",
+    "price": "29.99",
+    "rating": 4.9
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/518FqJvR9aL.jpg",
+    "price": "32.50",
+    "rating": 4.9
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
+    "price": "15.00",
+    "rating": 4.9
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91b0C2YNSrL.jpg",
+    "price": "13.99",
+    "rating": 4.8
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91SZSW8qSsL.jpg",
+    "price": "39.99",
+    "rating": 5.0
+  },
+  {
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/713jIoMO3UL.jpg",
+    "price": "21.90",
+    "rating": 4.8
+  },
+  {
+    "title": "Homo Deus",
+    "author": "Yuval Noah Harari",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71N2HZwRo3L.jpg",
+    "price": "20.40",
+    "rating": 4.7
+  },
+  {
+    "title": "The Psychology of Money",
+    "author": "Morgan Housel",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71g2ednj0JL.jpg",
+    "price": "19.50",
+    "rating": 4.9
+  },
+  {
+    "title": "Think and Grow Rich",
+    "author": "Napoleon Hill",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71UypkUjStL.jpg",
+    "price": "13.70",
+    "rating": 4.6
+  },
+  {
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81-QB7nDh4L.jpg",
+    "price": "18.20",
+    "rating": 4.7
+  },
+  {
+    "title": "Zero to One",
+    "author": "Peter Thiel",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71m-MxdJ2WL.jpg",
+    "price": "16.99",
+    "rating": 4.6
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71Q1Iu4suSL.jpg",
+    "price": "10.80",
+    "rating": 4.3
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81Scutrtj4L.jpg",
+    "price": "9.99",
+    "rating": 4.8
+  },
+  {
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81PRVYlImPL.jpg",
+    "price": "12.00",
+    "rating": 4.2
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81Q5w8qL+PL.jpg",
+    "price": "14.50",
+    "rating": 4.5
+  },
+  {
+    "title": "Angels and Demons",
+    "author": "Dan Brown",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91HHqVTAJQL.jpg",
+    "price": "13.90",
+    "rating": 4.6
+  },
+  {
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81JJPDNlxSL.jpg",
+    "price": "17.60",
+    "rating": 4.7
+  },
+  {
+    "title": "It Ends With Us",
+    "author": "Colleen Hoover",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML.jpg",
+    "price": "15.70",
+    "rating": 4.8
+  },
+  {
+    "title": "Verity",
+    "author": "Colleen Hoover",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91jBdaRVqML.jpg",
+    "price": "16.40",
+    "rating": 4.7
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91A6mM17LsL.jpg",
+    "price": "22.30",
+    "rating": 4.9
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91F7Pf8PACL.jpg",
+    "price": "18.00",
+    "rating": 4.8
+  },
+  {
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81zD9kaVW9L.jpg",
+    "price": "23.10",
+    "rating": 4.9
+  },
+  {
+    "title": "The Midnight Library",
+    "author": "Matt Haig",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81J6APjwxlL.jpg",
+    "price": "16.99",
+    "rating": 4.6
+  },
+  {
+    "title": "A Game of Thrones",
+    "author": "George R.R. Martin",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91dSMhdIzTL.jpg",
+    "price": "19.80",
+    "rating": 4.9
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91b8oNwaVLL.jpg",
+    "price": "18.70",
+    "rating": 4.8
+  },
+  {
+    "title": "Mistborn",
+    "author": "Brandon Sanderson",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91xBLJcC5JL.jpg",
+    "price": "17.90",
+    "rating": 4.9
+  },
+  {
+    "title": "The Way of Kings",
+    "author": "Brandon Sanderson",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91tECQFrZJL.jpg",
+    "price": "24.50",
+    "rating": 5.0
+  },
+  {
+    "title": "The Subtle Art of Not Giving a F*ck",
+    "author": "Mark Manson",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71QKQ9mwV7L.jpg",
+    "price": "15.20",
+    "rating": 4.5
+  },
+  {
+    "title": "Ikigai",
+    "author": "Héctor García",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81l3rZK4lnL.jpg",
+    "price": "14.60",
+    "rating": 4.7
+  },
+  {
+    "title": "Can't Hurt Me",
+    "author": "David Goggins",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81gTRv2HXrL.jpg",
+    "price": "20.99",
+    "rating": 4.9
+  },
+  {
+    "title": "Start With Why",
+    "author": "Simon Sinek",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71V4JQ2NsiL.jpg",
+    "price": "16.10",
+    "rating": 4.7
+  },
+  {
+    "title": "Steve Jobs",
+    "author": "Walter Isaacson",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81VStYnDGrL.jpg",
+    "price": "22.40",
+    "rating": 4.8
+  },
+  {
+    "title": "Elon Musk",
+    "author": "Walter Isaacson",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91+NBrXG-PL.jpg",
+    "price": "25.00",
+    "rating": 4.6
+  },
+  {
+    "title": "Becoming",
+    "author": "Michelle Obama",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81h2gWPTYJL.jpg",
+    "price": "19.70",
+    "rating": 4.9
+  },
+  {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81WojUxbbFL.jpg",
+    "price": "18.30",
+    "rating": 4.8
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81eB+7+CkUL.jpg",
+    "price": "14.90",
+    "rating": 4.9
+  },
+  {
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91LdK9WyL-L.jpg",
+    "price": "11.40",
+    "rating": 4.7
+  },
+  {
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81cWau1fJ1L.jpg",
+    "price": "10.50",
+    "rating": 4.5
+  },
+  {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/71X7HnBk2LL.jpg",
+    "price": "9.80",
+    "rating": 4.4
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81s6DUyQCZL.jpg",
+    "price": "17.30",
+    "rating": 4.8
+  },
+  {
+    "title": "Pet Sematary",
+    "author": "Stephen King",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/91M9xPIf10L.jpg",
+    "price": "16.80",
+    "rating": 4.7
+  },
+  {
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81WUAoL-wFL.jpg",
+    "price": "13.60",
+    "rating": 4.3
+  },
+  {
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81dQwQlmAXL.jpg",
+    "price": "15.90",
+    "rating": 4.6
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/817tHNcyAgL.jpg",
+    "price": "12.70",
+    "rating": 4.8
+  },
+  {
+    "title": "Looking for Alaska",
+    "author": "John Green",
+    "cover": "https://images-na.ssl-images-amazon.com/images/I/81N4hY4g1fL.jpg",
+    "price": "11.90",
+    "rating": 4.5
+  }
+]

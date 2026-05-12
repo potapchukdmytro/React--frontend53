@@ -1,0 +1,8 @@
+.book-card-hover {
+    transition: transform 0.2s linear;
+}
+
+.book-card-hover:hover {
+    cursor: pointer;
+    transform: translateY(-8px);
+}
