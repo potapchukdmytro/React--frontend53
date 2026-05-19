@@ -59,9 +59,9 @@ function Login() {
 
     const schema = Yup.object({
         email: Yup.string()
-            .required()
-            .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/),
-        password: Yup.string().required().min(6),
+            .required("Обов'язкове поле")
+            .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, "Невірний формат пошти"),
+        password: Yup.string().required("Обов'язкове поле").min(6, "Мінімум 6 символів"),
     });
 
     const formik = useFormik({
