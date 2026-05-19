@@ -33,61 +33,12 @@ const submitStyle = {
 };
 
 function Login() {
-    const [errorMessage, setErrorMessage] = useState("");
-
-    const emailInput = useRef(null);
-    const passwordInput = useRef(null);
-    const rememberRef = useRef(null);
-
-    function handleSubmit(e) {
-        // Зупиняє стандартне виконання form
-        e.preventDefault();
-        const form = e.target;
-
-        const loginData = {
-            email: emailInput.current.value,
-            password: passwordInput.current.value,
-            rememberMe: rememberRef.current.checked
-        };
-
-        if (!validate(loginData)) {
-            return;
-        }
-
-        form.reset();
-        alert("Успішний вхід");
-        console.log(loginData);
-    }
-
-    function validate({ email, password }) {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
-        if (email.length === 0) {
-            setErrorMessage("Вкажіть пошту");
-            return false;
-        }
-        if (!emailRegex.test(email)) {
-            setErrorMessage("Невірний формат пошти");
-            return false;
-        }
-
-        if (password.length < 6) {
-            setErrorMessage("Мінімальна довжина паролю 6 символів");
-            return false;
-        }
-
-        setErrorMessage("");
-
-        return true;
-    }
-
     return (
         <div>
             <h1>Вхід</h1>
             <form
                 action="/login"
                 method="get"
-                onSubmit={handleSubmit}
                 style={{
                     display: "flex",
                     flexDirection: "column",
@@ -100,7 +51,6 @@ function Login() {
                         <label>Пошта</label>
                     </div>
                     <input
-                        ref={emailInput}
                         name="email"
                         style={formInput}
                         type="email"
@@ -112,7 +62,6 @@ function Login() {
                         <label>Пароль</label>
                     </div>
                     <input
-                        ref={passwordInput}
                         name="password"
                         style={formInput}
                         type="password"
@@ -122,7 +71,6 @@ function Login() {
                 <div style={fieldsGroup}>
                     <div style={formLabel}>
                         <input
-                            ref={rememberRef}
                             name="rememberMe"
                             style={formCheckbox}
                             type="checkbox"
@@ -136,7 +84,7 @@ function Login() {
                 </div>
                 <div>
                     <span style={{ fontSize: "0.9em", color: "coral" }}>
-                        {errorMessage}
+                        Тут буде помилка
                     </span>
                 </div>
             </form>
