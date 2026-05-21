@@ -1,8 +1,13 @@
-import { Rating } from "@mui/material";
+import { IconButton, Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import ClearIcon from '@mui/icons-material/Clear';
 import "./BookCard.css";
 
 function BookCard({book}) {
+    function removeBook() {
+        console.log("remove");
+    }
+
     return (
         <div
             className="book-card-hover"
@@ -10,9 +15,18 @@ function BookCard({book}) {
                 display: "flex",
                 flexDirection: "column",
                 padding: "12px",
-                boxShadow: "0px 0px 1px white"
+                boxShadow: "0px 0px 1px white",
+                position: "relative",
             }}
         >
+            <IconButton onClick={removeBook} style={{
+                position: "absolute",
+                top: "0px",
+                right: "0px",
+                zIndex: "10"
+            }}>
+                <ClearIcon color="error" />
+            </IconButton>
             <div>
                 <img
                     height="300px"

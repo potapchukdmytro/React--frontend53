@@ -1,8 +1,22 @@
+import { useState, useEffect } from "react";
 import BookCard from "../../components/cards/BookCard";
-import books from "./booksData.json";
+import booksJson from "./booksData.json";
 import { CircularProgress } from "@mui/material";
 
 function Books() {
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        const localBooks = localStorage.getItem("books");
+
+        if(localBooks) {
+            setBooks(JSON.parse(localBooks));
+        } else {
+            setBooks(booksJson);
+            localStorage.setItem("books", JSON.stringify(booksJson));
+        }
+    }, []);
+
     // Спінер
     if (books.length === 0) {
         return (
