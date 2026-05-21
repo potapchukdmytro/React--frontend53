@@ -3,9 +3,15 @@ import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from '@mui/icons-material/Clear';
 import "./BookCard.css";
 
-function BookCard({book}) {
+function BookCard({book, setBooks}) {
     function removeBook() {
-        console.log("remove");
+        const booksJson = localStorage.getItem("books");
+        if(booksJson) {
+            let books = JSON.parse(booksJson);
+            books = books.filter(b => b.id !== book.id);
+            localStorage.setItem("books", JSON.stringify(books));
+            setBooks(books);
+        }
     }
 
     return (

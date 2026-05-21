@@ -48,7 +48,7 @@ function Books() {
                 }}
             >
                 {books.map((book, index) => (
-                    <BookCard key={index} book={book} />
+                    <BookCard key={index} book={book} setBooks={setBooks} />
                 ))}
             </div>
         </>
