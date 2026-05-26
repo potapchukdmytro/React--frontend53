@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import Books from './pages/books/Books'
 import LocalStorageTemplate from './components/localStorage/LocalStorageTemplate';
 import CatsPage from './pages/catsPage/CatsPage';
+import Weather from './pages/weather/Weather';
 
 function App() {
   // const [counter, setCounter] = useState(0);
@@ -20,7 +21,8 @@ function App() {
     <>
       {/* <Books/> */}
       {/* <LocalStorageTemplate/> */}
-      <CatsPage />
+      {/* <CatsPage /> */}
+      <Weather/>
     </>
   )
 }
