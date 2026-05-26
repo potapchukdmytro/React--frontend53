@@ -2,6 +2,7 @@ import './App.css'
 import {useState, useEffect} from "react";
 import Books from './pages/books/Books'
 import LocalStorageTemplate from './components/localStorage/LocalStorageTemplate';
+import CatsPage from './pages/catsPage/CatsPage';
 
 function App() {
   // const [counter, setCounter] = useState(0);
@@ -19,6 +20,7 @@ function App() {
     <>
       {/* <Books/> */}
       {/* <LocalStorageTemplate/> */}
+      <CatsPage />
     </>
   )
 }
