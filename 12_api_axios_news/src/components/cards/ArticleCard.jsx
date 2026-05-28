@@ -1,8 +1,28 @@
 import "./BookCard.css";
 
-function ArticleCard({article}) {
+function ArticleCard({ article }) {
+    function formatDate(value) {
+        "2026-05-13T19:15:59Z";
+        const fullDate = value.split("T")[0];
+        const fullTime = value.split("T")[1];
+
+        const dateParts = fullDate.split("-");
+        const timeParts = fullTime.split(":");
+
+        return `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}, ${timeParts[0]}:${timeParts[1]}`;
+    }
+
+    function linkTo() {
+        // направити користувача на іншу адресу
+        // те саме що і тег <a href={url}>
+
+        // window.location = article.url; // та сама вкладка
+        window.open(article.url); // нова вкладка
+    }
+
     return (
         <div
+            onClick={linkTo}
             className="book-card-hover"
             style={{
                 display: "flex",
@@ -27,7 +47,7 @@ function ArticleCard({article}) {
                 {article.title}
             </div>
             <div style={{ textAlign: "start", fontSize: "0.7em" }}>
-                {article.author} - {article.publishedAt}
+                {article.author} - {formatDate(article.publishedAt)}
             </div>
             <div>
                 <img
@@ -38,7 +58,13 @@ function ArticleCard({article}) {
                     style={{ objectFit: "contain" }}
                 />
             </div>
-            <div style={{textAlign: "start", padding: "0px 8px 8px 8px", fontSize: "0.95em"}}>
+            <div
+                style={{
+                    textAlign: "start",
+                    padding: "0px 8px 8px 8px",
+                    fontSize: "0.95em",
+                }}
+            >
                 {article.description}
             </div>
         </div>

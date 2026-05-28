@@ -1,27 +1,48 @@
 import { useEffect, useState } from "react";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Pagination } from "@mui/material";
 import ArticleCard from "../../components/cards/ArticleCard";
 import axios from "axios";
 
 function News() {
     const [news, setNews] = useState([]);
+    const [page, setPage] = useState(1);
+    const [count, setCount] = useState(0);
+
+    function changePage(event, value) {
+        // scroll to top
+        window.scrollTo({top: 0, behavior: "smooth"});
+        setPage(value);
+    }
 
     async function fetchNews() {
         const key = "eef038525fa7401d8dfe7cf1a9006b10";
-        const url = `https://newsapi.org/v2/everything?apiKey=${key}&q=it`;
+        const q = "Технології";
+        const lang = "uk";
+        const pageSize = "15";
+        const url = `https://newsapi.org/v2/everything?apiKey=${key}&q=${q}&language=${lang}&page=${page}&pageSize=${pageSize}`;
 
         try {
             const response = await axios.get(url);
             const {data} = response;
+            
+            // Заукруглення
+            // Math.ceil();  - до більшого цілого
+            // Math.round(); - (>= 0.5 до більшого цілого) (< 0.5 до меншого цілого)
+            // Math.floor(); - до меншого цілого
+            
+            const pageCount = Math.ceil(data.totalResults / pageSize);
+            setCount(pageCount);
             setNews(data.articles);
         } catch (error) {
             console.log(error);
         }
     }
 
+    // [] - масив змінних від яких залежить useEffect. 
+    // Якщо одна із цих змінних змінить своє значення то useEffect спрацює повторно
     useEffect(() => {
         fetchNews();
-    }, []);
+    }, [page]);
 
     // Спінер
     if (news.length === 0) {
@@ -55,6 +76,9 @@ function News() {
                 {news.map((article, index) => (
                     <ArticleCard article={article} key={index} />
                 ))}
+            </div>
+            <div style={{display: "flex", justifyContent: "center", margin: "40px 20px"}}>
+                <Pagination page={page} count={count} onChange={changePage} color="warning" />
             </div>
         </>
     );
