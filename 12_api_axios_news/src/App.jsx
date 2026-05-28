@@ -4,6 +4,7 @@ import Books from './pages/books/Books'
 import LocalStorageTemplate from './components/localStorage/LocalStorageTemplate';
 import CatsPage from './pages/catsPage/CatsPage';
 import Weather from './pages/weather/Weather';
+import News from './pages/news/News';
 
 function App() {
   // const [counter, setCounter] = useState(0);
@@ -22,7 +23,8 @@ function App() {
       {/* <Books/> */}
       {/* <LocalStorageTemplate/> */}
       {/* <CatsPage /> */}
-      <Weather/>
+      {/* <Weather/> */}
+      <News/>
     </>
   )
 }
