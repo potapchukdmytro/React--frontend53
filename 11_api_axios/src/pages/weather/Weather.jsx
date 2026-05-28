@@ -1,6 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+// Способи передати дані під час запиту
+// UrlParams або QueryParams (після ? у адресі). Працюють у всіх http методах (get, post, put....)
+// https://api.com?key=value&page=1&lang=uk
+
+// Headers (спеціальне налаштування для запиту). Працюють у всіх http методах (get, post, put....)
+// https://api.com
+// -H "key: value"
+// -H "Content-Type: application/json"
+// const url = `http://api.ipinfo.io/lite/${ip}`;
+//         const response = await axios.get(url, {
+//             headers: {
+//                 "Authorization": "Bearer 419613f902d152"
+//             }
+//         });
+
+
+// Body (спеціальне налаштування для запиту). Працюють у post, put, patch
+// { "key": "value", "name": "user" }
+
 function Weather() {
     const [weather, setWeather] = useState(null);
 
@@ -55,8 +74,20 @@ function Weather() {
         fetchWeather({lat: latitude, lon: longitude});
     }
 
-    function errorLocation(error) {
-        // console.log(error);
+    async function errorLocation(error) {
+        const responseIp = await axios.get("https://api.ipify.org");
+        const ip = responseIp.data;
+    
+        const url = `https://api.ipgeolocation.io/v3/ipgeo?apiKey=fdec058a5c3143afb45fd1b078226893&ip=${ip}`;
+        const response = await axios.get(url);
+
+        const {data} = response;
+        const coords = {
+            lat: data.location.latitude,
+            lon: data.location.longitude
+        }
+
+        await fetchWeather(coords);
     }
 
     useEffect(() => {
