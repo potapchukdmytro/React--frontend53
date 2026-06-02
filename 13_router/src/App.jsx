@@ -5,26 +5,21 @@ import LocalStorageTemplate from "./components/localStorage/LocalStorageTemplate
 import CatsPage from "./pages/catsPage/CatsPage";
 import Weather from "./pages/weather/Weather";
 import News from "./pages/news/News";
+import Navbar from "./components/navbar/Navbar";
+import { Route, Routes } from "react-router";
+import NotFound from "./pages/notFound/NotFound";
 
 function App() {
-    // const [counter, setCounter] = useState(0);
-
-    // console.log("Render component");
-
-    // useEffect - хук який виконує код в середині тільки один раз при першому рендері
-    // useEffect(func, dependencyList);
-
-    // useEffect(() => {
-    //   setCounter((prev) => prev + 1)
-    // }, []);
-
     return (
         <>
-            {/* <Books/> */}
-            {/* <LocalStorageTemplate/> */}
-            {/* <CatsPage /> */}
-            {/* <Weather/> */}
-            {/* <News /> */}
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Books />} />
+                <Route path="/cats" element={<CatsPage />} />
+                <Route path="/weather" element={<Weather />} />
+                <Route path="/news" element={<News />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
         </>
     );
 }
