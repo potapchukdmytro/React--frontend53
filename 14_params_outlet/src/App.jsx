@@ -12,6 +12,7 @@ import NotFound from "./pages/notFound/NotFound";
 import Footer from "./components/footer/Footer";
 import UserLayout from "./components/layouts/userLayout/UserLayout";
 import AdminLayout from "./components/layouts/adminLayout/AdminLayout";
+import BookDetail from "./pages/books/BookDetail";
 
 function App() {
     return (
@@ -24,16 +25,17 @@ function App() {
                     <Route path="weather" element={<Weather />} />
                     <Route path="news" element={<News />} />
                     <Route path="login" element={<Login />} />
+                    <Route path="detail" element={<BookDetail />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
 
                 {/* Admin routes */}
                 <Route path="/admin" element={<AdminLayout />}>
-                    <Route index element={<h1>Dashboard</h1>}/>
-                    <Route path="books" element={<h1>Test books</h1>}/>
-                    <Route path="authors" element={<h1>Test authors</h1>}/>
-                    <Route path="users" element={<h1>Test users</h1>}/>
-                    <Route path="roles" element={<h1>Test roles</h1>}/>
+                    <Route index element={<h1>Dashboard</h1>} />
+                    <Route path="books" element={<h1>Test books</h1>} />
+                    <Route path="authors" element={<h1>Test authors</h1>} />
+                    <Route path="users" element={<h1>Test users</h1>} />
+                    <Route path="roles" element={<h1>Test roles</h1>} />
                 </Route>
             </Routes>
         </>
