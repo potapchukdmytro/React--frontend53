@@ -4,6 +4,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./BookCard.css";
+import { Link } from "react-router";
 
 function BookCard({ book, setBooks }) {
     function removeBook() {
@@ -80,20 +81,22 @@ function BookCard({ book, setBooks }) {
                     }
                 />
             </div>
-            <div
-                style={{
-                    overflow: "hidden",
-                    textAlign: "start",
-                    fontWeight: "bold",
-                    color: "white",
-                    fontSize: "1.05em",
-                    width: "100%",
-                    whiteSpace: "nowrap",
-                    textOverflow: "ellipsis",
-                }}
-            >
-                {book.title}
-            </div>
+            <Link to={`book/${book.id}`} style={{textDecoration: "none"}}>
+                <div
+                    style={{
+                        overflow: "hidden",
+                        textAlign: "start",
+                        fontWeight: "bold",
+                        color: "white",
+                        fontSize: "1.05em",
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis"
+                    }}
+                >
+                    {book.title}
+                </div>
+            </Link>
             <div style={{ textAlign: "start", fontSize: "0.7em" }}>
                 {book.author}
             </div>

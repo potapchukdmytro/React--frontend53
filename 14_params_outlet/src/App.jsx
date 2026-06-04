@@ -21,11 +21,12 @@ function App() {
                 {/* Users routes */}
                 <Route path="/" element={<UserLayout />}>
                     <Route index element={<Books />} />
+                    {/* :id - url параметер */}
+                    <Route path="book/:id" element={<BookDetail />} />
                     <Route path="cats" element={<CatsPage />} />
                     <Route path="weather" element={<Weather />} />
                     <Route path="news" element={<News />} />
                     <Route path="login" element={<Login />} />
-                    <Route path="detail" element={<BookDetail />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
 
