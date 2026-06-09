@@ -14,6 +14,7 @@ import UserLayout from "./components/layouts/userLayout/UserLayout";
 import AdminLayout from "./components/layouts/adminLayout/AdminLayout";
 import BookDetail from "./pages/books/BookDetail";
 import Movies from "./pages/movies/Movies";
+import MovieDetail from "./pages/movies/MovieDetail";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     <Route path="news" element={<News />} />
                     <Route path="login" element={<Login />} />
                     <Route path="movies" element={<Movies />} />
+                    <Route path="movie/:imdbId" element={<MovieDetail />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
 

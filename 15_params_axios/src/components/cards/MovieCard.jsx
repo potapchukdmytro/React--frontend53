@@ -60,7 +60,8 @@ function MovieCard({ movie }) {
                     textAlign: "start",
                     padding: "0px 8px 8px 8px",
                     fontSize: "0.95em",
-                    padding: "6px 12px"
+                    padding: "6px 12px",
+                    color: "#9ca3af"
                 }}
             >
                 Рік випуску: <span style={{fontWeight: "bold", color: "white"}}>{movie.Year}</span>
