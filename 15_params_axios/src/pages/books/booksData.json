@@ -1,0 +1,522 @@
+[
+    {
+        "id": 1,
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "description": "Практичний посібник про те, як змінити своє життя за допомогою маленьких щоденних звичок. Автор пояснює систему «атомних» змін, яка базується на біології, психології та нейронауці, допомагаючи позбутися поганих звичок і сформувати корисні.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL.jpg",
+        "price": "18.99",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 2,
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "description": "Філософська притча про іспанського пастуха Сантьяго, який вирушає до єгипетських пірамід у пошуках скарбів. Це історія про пошук свого призначення («Своєї Легенди»), віру в знаки долі та вміння слухати власне серце.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71aFt4\u002BOTOL.jpg",
+        "price": "12.50",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 3,
+        "title": "1984",
+        "author": "George Orwell",
+        "description": "Культовий роман-антиутопія про тоталітарне суспільство, де «Великий Брат» стежить за кожним кроком. Головний герой Вінстон Сміт намагається зберегти людську гідність і право на правду в світі, де навіть думки контролюються державою.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71kxa1-0mfL.jpg",
+        "price": "10.99",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 4,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "description": "Історія про дорослішання, расову несправедливість та моральну стійкість у штаті Алабама 1930-х років. Очима маленької дівчинки Глазастик ми бачимо, як її батько, адвокат Аттікус Фінч, захищає невинного чорношкірого чоловіка.",
+        "cover": "https://content.rozetka.com.ua/goods/images/big/342019641.jpg",
+        "price": "14.20",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 5,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "description": "Класика американської літератури про «епоху джазу». Це трагічна історія кохання загадкового мільйонера Джея Гетсбі до Дейзі Б'юкенен на тлі розкоші, соціальної нерівності та краху ілюзій про «американську мрію».",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81af\u002BMCATTL.jpg",
+        "price": "11.30",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 6,
+        "title": "Rich Dad Poor Dad",
+        "author": "Robert Kiyosaki",
+        "description": "Бестселер з фінансової грамотності, що базується на порівнянні виховання двох батьків. Книга вчить різниці між активами та пасивами, пояснює, чому не варто працювати за гроші, а краще змусити гроші працювати на себе.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg",
+        "price": "16.80",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 7,
+        "title": "Deep Work",
+        "author": "Cal Newport",
+        "description": "Дослідження про цінність глибокої концентрації в сучасному світі, переповненому цифровими відволіканнями. Автор пропонує методики, як досягати максимальної продуктивності та опановувати складні навички швидше за інших.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71QKQ9mwV7L.jpg",
+        "price": "17.40",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 8,
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "description": "Біблія для розробників ПЗ. Книга детально описує принципи, патерни та практики написання якісного коду, який легко читати, підтримувати та масштабувати. Обов'язкове читання для професійного зростання програміста.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/41SH-SvWPxL.jpg",
+        "price": "29.99",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 9,
+        "title": "The Pragmatic Programmer",
+        "author": "Andrew Hunt",
+        "description": "Збірка практичних порад для розробників, що охоплює теми від відповідальності за результат до автоматизації та тестування. Книга допомагає розвинути мислення «прагматичного» фахівця, який фокусується на ефективності.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/518FqJvR9aL.jpg",
+        "price": "32.50",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 10,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "description": "Перша книга про хлопчика-сироту, який у свій 11-й день народження дізнається, що він чарівник. Подорож до школи Гоґвортс відкриває світ магії, справжньої дружби та протистояння з темним магом Волдемортом.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
+        "price": "15.00",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 11,
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "description": "Захоплива пригода гобіта Більбо Беггінса, який разом із чарівником Гандальфом та загоном гномів вирушає до Самотньої гори, щоб відвоювати скарби у грізного дракона Смоґа.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91b0C2YNSrL.jpg",
+        "price": "13.99",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 12,
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "description": "Епічне фентезі про боротьбу за долю Середзем'я. Гобіт Фродо та його друзі мають подолати небезпечний шлях до Мордору, щоб знищити Єдиний Перстень і покласти край владі Темного Володаря Саурона.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91SZSW8qSsL.jpg",
+        "price": "39.99",
+        "rating": 5,
+        "isFavorite": false
+    },
+    {
+        "id": 13,
+        "title": "Sapiens",
+        "author": "Yuval Noah Harari",
+        "description": "Провокативний огляд історії людства від кам’яної доби до сучасності. Харарі досліджує, як когнітивна, аграрна та наукова революції змінили наш вид і чому саме Homo Sapiens зміг домінувати на планеті.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/713jIoMO3UL.jpg",
+        "price": "21.90",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 14,
+        "title": "Homo Deus",
+        "author": "Yuval Noah Harari",
+        "description": "Продовження книги «Sapiens», де автор зазирає у майбутнє. Він аналізує, як розвиток штучного інтелекту, біоінженерії та пошук безсмертя можуть перетворити людей на новий вид «Homo Deus» (Людина Божественна).",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71N2HZwRo3L.jpg",
+        "price": "20.40",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 15,
+        "title": "The Psychology of Money",
+        "author": "Morgan Housel",
+        "description": "Збірка есеїв, яка доводить, що фінансовий успіх залежить не стільки від знання математики, скільки від поведінки та психології. Автор пояснює, як наше его, упередження та емоції впливають на наші грошові рішення.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71g2ednj0JL.jpg",
+        "price": "19.50",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 16,
+        "title": "Think and Grow Rich",
+        "author": "Napoleon Hill",
+        "description": "Класичний посібник з особистого успіху, написаний на основі вивчення життів найбагатших людей свого часу. Книга пропонує 13 кроків до багатства, акцентуючи увагу на силі думки та наполегливості.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71UypkUjStL.jpg",
+        "price": "13.70",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 17,
+        "title": "The Lean Startup",
+        "author": "Eric Ries",
+        "description": "Методологія побудови успішного бізнесу в умовах невизначеності. Автор пропонує підхід швидкого тестування ідей, створення MVP (мінімально життєздатного продукту) та постійної адаптації на основі фідбеку клієнтів.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81-QB7nDh4L.jpg",
+        "price": "18.20",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 18,
+        "title": "Zero to One",
+        "author": "Peter Thiel",
+        "description": "Засновник PayPal Пітер Тіль ділиться поглядами на інновації. Він стверджує, що справжній прогрес — це перехід від «0 до 1», створення чогось принципово нового, а не просте копіювання існуючих моделей.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71m-MxdJ2WL.jpg",
+        "price": "16.99",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 19,
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "description": "Роман, що став маніфестом підліткового бунту. Головний герой Голден Колфілд ділиться своїми щирими та іноді цинічними роздумами про фальшивість дорослого світу, намагаючись знайти своє місце в житті.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71Q1Iu4suSL.jpg",
+        "price": "10.80",
+        "rating": 4.3,
+        "isFavorite": false
+    },
+    {
+        "id": 20,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "description": "Класичний роман про звичаї англійського суспільства початку XIX століття. Це історія непростих стосунків Елізабет Беннет і містера Дарсі, де гордість і перше хибне враження ледь не стають на заваді справжньому коханню.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81Scutrtj4L.jpg",
+        "price": "9.99",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 21,
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "description": "Грандіозна оповідь про одержимість. Капітан Ахав веде свій корабель «Пекод» через океани заради помсти величезному білому киту, що символізує незбагненну силу природи та долі.",
+        "cover": "https://i.ebayimg.com/images/g/HsMAAOSwbzpgxyxH/s-l960.webp",
+        "price": "12.00",
+        "rating": 4.2,
+        "isFavorite": false
+    },
+    {
+        "id": 22,
+        "title": "The Da Vinci Code",
+        "author": "Dan Brown",
+        "description": "Динамічний трилер про професора Роберта Ленгдона, який розгадує таємницю вбивства в Луврі. Сліди ведуть до робіт Леонардо да Вінчі та прихованої правди про Грааль, яку церква намагалася стерти віками.",
+        "cover": "https://content.rozetka.com.ua/goods/images/big/491097475.jpg",
+        "price": "14.50",
+        "rating": 4.5,
+        "isFavorite": false
+    },
+    {
+        "id": 23,
+        "title": "Angels and Demons",
+        "author": "Dan Brown",
+        "description": "Перша пригода Роберта Ленгдона. Цього разу він протистоїть таємному ордену Ілюмінатів у Ватикані, намагаючись запобігти вибуху антиматерії та врятувати Католицьку церкву від знищення.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91HHqVTAJQL.jpg",
+        "price": "13.90",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 24,
+        "title": "The Silent Patient",
+        "author": "Alex Michaelides",
+        "description": "Психологічний трилер про талановиту художницю Алісію, яка одного вечора вбила свого чоловіка і з того часу не промовила жодного слова. Кримінальний психотерапевт намагається розкрити таємницю її мовчання.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81JJPDNlxSL.jpg",
+        "price": "17.60",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 25,
+        "title": "It Ends With Us",
+        "author": "Colleen Hoover",
+        "description": "Емоційно складна історія про Лілі Блум, яка знаходить кохання своєї мрії, але згодом стикається з аб'юзом у стосунках. Книга досліджує тему циклічності домашнього насильства та важкого вибору заради власного майбутнього.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML.jpg",
+        "price": "15.70",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 26,
+        "title": "Verity",
+        "author": "Colleen Hoover",
+        "description": "Темний романтичний трилер про письменницю Лоуен, яка погоджується завершити серію книг замість травмованої авторки Веріті Кроуфорд. В будинку Веріті вона знаходить жахливий рукопис, що розкриває похмурі сімейні таємниці.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91jBdaRVqML.jpg",
+        "price": "16.40",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 27,
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "description": "Шедевр наукової фантастики. На пустельній планеті Арракіс розгортається боротьба за «прянощі» — найцінніший ресурс у всесвіті. Юний Пол Атрід опиняється в центрі політичних інтриг, екологічних змін та релігійного пророцтва.",
+        "cover": "https://content2.rozetka.com.ua/goods/images/big/360102464.jpg",
+        "price": "22.30",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 28,
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "description": "Астронавт Марк Вотні залишається наодинці на Марсі після піщаної бурі. Маючи обмежені запаси, він мусить використовувати свої знання з ботаніки та інженерії, щоб вижити і подати сигнал на Землю.",
+        "cover": "https://i.ebayimg.com/images/g/nncAAeSwh5lp9IGv/s-l1600.webp",
+        "price": "18.00",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 29,
+        "title": "Project Hail Mary",
+        "author": "Andy Weir",
+        "description": "Райланд Грейс прокидається на космічному кораблі, не пам'ятаючи ні свого імені, ні місії. Згодом він усвідомлює, що він — остання надія людства на порятунок від глобальної катастрофи, і він не єдиний розумний істота в космосі.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81zD9kaVW9L.jpg",
+        "price": "23.10",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 30,
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "description": "Між життям і смертю є бібліотека, де кожна книга — це історія вашого життя, якби ви прийняли інше рішення. Нора Сід отримує шанс прожити всі свої альтернативні долі, щоб зрозуміти, що робить життя вартим того, щоб його жити.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81J6APjwxlL.jpg",
+        "price": "16.99",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 31,
+        "title": "A Game of Thrones",
+        "author": "George R.R. Martin",
+        "description": "Початок епічної саги про боротьбу за Залізний трон Вестероса. Шляхетні родини плетуть інтриги та воюють між собою, поки на півночі пробуджується стародавнє зло, а на сході піднімається законна спадкоємиця з драконами.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91dSMhdIzTL.jpg",
+        "price": "19.80",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 32,
+        "title": "The Name of the Wind",
+        "author": "Patrick Rothfuss",
+        "description": "Історія Квоута — легендарної постаті, мага та музиканта. В одному з трактирів він починає розповідати хроністу правдиву історію свого життя: від бродячого сироти до учня в Університеті магії.",
+        "cover": "https://static.yakaboo.ua/media/catalog/product/7/1/71jjcptgd3l.jpg",
+        "price": "18.70",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 33,
+        "title": "Mistborn",
+        "author": "Brandon Sanderson",
+        "description": "Світ, де тисячу років падає попіл, а «Останній правитель» панує за допомогою магії металів. Група повстанців на чолі з талановитим злодієм Кельсером та його ученицею Він планує неможливе — повалення безсмертного тирана.",
+        "cover": "https://nashformat.ua/files/products/the-final-empire-mistborn-book-one-international-edition-953405.800x800.jpeg",
+        "price": "17.90",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 34,
+        "title": "The Way of Kings",
+        "author": "Brandon Sanderson",
+        "description": "Перша частина монументальної саги «Архів Буресвітла». На планеті Рошар, де лютують надшторми, переплітаються долі раба-хірурга, втомленого війною полководця та дівчини-науковиці в спробі повернути втрачену магію Сяючих Лицарів.",
+        "cover": "https://static.yakaboo.ua/media/cloudflare/product/webp/600x840/6/1/61qlntgpxnl.jpg",
+        "price": "24.50",
+        "rating": 5,
+        "isFavorite": false
+    },
+    {
+        "id": 35,
+        "title": "The Subtle Art of Not Giving a F*ck",
+        "author": "Mark Manson",
+        "description": "Нетрадиційний підхід до саморозвитку. Менсон стверджує, що ключ до щастя — не в постійному позитиві, а в умінні обирати, на що варто витрачати свою обмежену увагу і за що варто нести відповідальність.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/71QKQ9mwV7L.jpg",
+        "price": "15.20",
+        "rating": 4.5,
+        "isFavorite": false
+    },
+    {
+        "id": 36,
+        "title": "Ikigai",
+        "author": "Héctor García",
+        "description": "Книга про японське мистецтво пошуку сенсу життя. Автори дослідили звички жителів Окінави, де живе найбільше довгожителів, і вивели формулу ікігай — поєднання того, що ви любите, в чому ви сильні і що потрібно світу.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81l3rZK4lnL.jpg",
+        "price": "14.60",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 37,
+        "title": "Can't Hurt Me",
+        "author": "David Goggins",
+        "description": "Автобіографія Девіда Ґоґґінса, колишнього морського котика, який подолав важке дитинство та ожиріння, ставши одним із найвитриваліших атлетів світу. Книга вчить «загартовувати розум» і перевершувати власні ліміти.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81gTRv2HXrL.jpg",
+        "price": "20.99",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 38,
+        "title": "Start With Why",
+        "author": "Simon Sinek",
+        "description": "Дослідження лідерства, яке доводить: успішні лідери та компанії починають із питання «Чому?». Вони фокусуються на своїй місії та цінностях, що дозволяє їм надихати людей, а не просто маніпулювати ними.",
+        "cover": "https://images.ctfassets.net/8nlhtsnwf6dk/77v9Td6N9LN1vnNtuDFyFo/4a56a31aeb9733bc6e402ed51e488ea4/StartwithWHY.jpeg?w=1200\u0026q=65\u0026fm=webp",
+        "price": "16.10",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 39,
+        "title": "Steve Jobs",
+        "author": "Walter Isaacson",
+        "description": "Офіційна біографія засновника Apple, написана на основі сотень інтерв'ю. Це чесний портрет винахідника-перфекціоніста, який зробив революцію в шести індустріях і змінив наше ставлення до технологій.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81VStYnDGrL.jpg",
+        "price": "22.40",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 40,
+        "title": "Elon Musk",
+        "author": "Walter Isaacson",
+        "description": "Детальна біографія одного з найсуперечливіших візіонерів сучасності. Ісаксон досліджує шлях Маска від дитинства в ПАР до керівництва Tesla та SpaceX, розкриваючи його складний характер та прагнення колонізувати Марс.",
+        "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxe2HCGsutwhhx1njUPMFGkClQkOS7pXlOg\u0026s",
+        "price": "25.00",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 41,
+        "title": "Becoming",
+        "author": "Michelle Obama",
+        "description": "Мемуари колишньої першої леді США. Мішель Обама щиро розповідає про своє коріння, кар’єру, материнство та роки, проведені в Білому домі, надихаючи читачів знайти свій власний голос і шлях у житті.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81h2gWPTYJL.jpg",
+        "price": "19.70",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 42,
+        "title": "Educated",
+        "author": "Tara Westover",
+        "description": "Неймовірна історія дівчини, яка виросла в родині виживальників-мормонів у горах Айдахо і ніколи не ходила до школи. Вона самотужки підготувалася до вступу в коледж і врешті здобула докторський ступінь у Кембриджі.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81WojUxbbFL.jpg",
+        "price": "18.30",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 43,
+        "title": "The Book Thief",
+        "author": "Markus Zusak",
+        "description": "Історія про нацистську Німеччину, розказана від імені Смерті. Маленька дівчинка Лізель знаходить розраду в книжках, які вона краде, ділячись ними з близькими та євреєм, якого її сім’я переховує в підвалі.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81eB\u002B7\u002BCkUL.jpg",
+        "price": "14.90",
+        "rating": 4.9,
+        "isFavorite": false
+    },
+    {
+        "id": 44,
+        "title": "Little Women",
+        "author": "Louisa May Alcott",
+        "description": "Класичний роман про життя чотирьох сестер Марч під час Громадянської війни в США. Кожна з них шукає свій шлях у житті, стикаючись із труднощами, втратами та першим коханням.",
+        "cover": "https://m.media-amazon.com/images/I/81XxP9qyfzL.jpg",
+        "price": "11.40",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 45,
+        "title": "Dracula",
+        "author": "Bram Stoker",
+        "description": "Готичний роман, що започаткував сучасну міфологію про вампірів. Через щоденники та листи героїв ми дізнаємося про жахливу подорож графа Дракули з Трансільванії до Лондона та боротьбу професора Ван Хельсінга з ним.",
+        "cover": "https://cdn.kobo.com/book-images/88a05cf1-a3b6-461b-a8f7-f0e25b06274a/1200/1200/False/dracula-bram-stoker.jpg",
+        "price": "10.50",
+        "rating": 4.5,
+        "isFavorite": false
+    },
+    {
+        "id": 46,
+        "title": "Frankenstein",
+        "author": "Mary Shelley",
+        "description": "Філософський роман жахів про вченого Віктора Франкенштейна, який створює живу істоту з частин мертвих тіл. Це трагічна історія про відповідальність творця, самотність та межу між наукою і мораллю.",
+        "cover": "https://images.cdn3.buscalibre.com/fit-in/360x360/d3/f5/d3f5ef3f83139ee92343756b2fe82d12.jpg",
+        "price": "9.80",
+        "rating": 4.4,
+        "isFavorite": false
+    },
+    {
+        "id": 47,
+        "title": "The Shining",
+        "author": "Stephen King",
+        "description": "Майстерний трилер про готель «Оверлук», де Джек Торренс погоджується працювати зимовим наглядачем. Ізоляція та зловісна аура готелю поступово руйнують психіку Джека, перетворюючи його на загрозу для дружини та сина.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81s6DUyQCZL.jpg",
+        "price": "17.30",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 48,
+        "title": "Pet Sematary",
+        "author": "Stephen King",
+        "description": "Один із найстрашніших романів Кінга про горе та заборонене бажання повернути померлих. Сім’я Крід виявляє стародавнє кладовище, де земля має здатність воскрешати мертвих, але те, що повертається, вже не є колишньою істотою.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/91M9xPIf10L.jpg",
+        "price": "16.80",
+        "rating": 4.7,
+        "isFavorite": false
+    },
+    {
+        "id": 49,
+        "title": "The Girl on the Train",
+        "author": "Paula Hawkins",
+        "description": "Психологічний трилер про Рейчел, яка щодня з вікна потяга спостерігає за ідеальною, на її погляд, парою. Одного разу вона бачить щось шокуюче і виявляється втягнутою в розслідування зникнення жінки.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81WUAoL-wFL.jpg",
+        "price": "13.60",
+        "rating": 4.3,
+        "isFavorite": false
+    },
+    {
+        "id": 50,
+        "title": "Gone Girl",
+        "author": "Gillian Flynn",
+        "description": "Драматичний детектив про зникнення Емі Данн у день п’ятої річниці весілля. Всі докази вказують на чоловіка Ніка, але правда про їхній шлюб виявляється набагато складнішою та небезпечнішою, ніж здавалося спочатку.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/81dQwQlmAXL.jpg",
+        "price": "15.90",
+        "rating": 4.6,
+        "isFavorite": false
+    },
+    {
+        "id": 51,
+        "title": "The Fault in Our Stars",
+        "author": "John Green",
+        "description": "Щемлива історія кохання двох підлітків, хворих на рак. Хейзел та Огастус вирушають у подорож до Амстердама, намагаючись знайти відповіді на вічні питання про життя, смерть і те, що залишиться після них.",
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/817tHNcyAgL.jpg",
+        "price": "12.70",
+        "rating": 4.8,
+        "isFavorite": false
+    },
+    {
+        "id": 52,
+        "title": "Looking for Alaska",
+        "author": "John Green",
+        "description": "Майлз «Товстун» Галтер їде до школи-інтернату в пошуках «Великого Можливо». Там він закохується в загадкову та непередбачувану Аляску Янг, чиє життя та раптова трагедія назавжди змінюють його світогляд.",
+        "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH0ZBhZmUCEX0z4m_dHtgZkeOY31AVp7R9ow\u0026s",
+        "price": "11.90",
+        "rating": 4.5,
+        "isFavorite": false
+    }
+]
