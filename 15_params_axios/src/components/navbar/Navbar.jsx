@@ -18,6 +18,7 @@ function Navbar() {
                     <Link to="/weather" className="nav-link">Погода</Link>
                     <Link to="/news" className="nav-link">Новини</Link>
                     <Link to="/cats" className="nav-link">Фото котиків</Link>
+                    <Link to="/movies" className="nav-link">Фільми</Link>
                 </div>
                 <div>
                     <Link to="/login" className="nav-link">Увійти</Link>

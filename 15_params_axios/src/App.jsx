@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer";
 import UserLayout from "./components/layouts/userLayout/UserLayout";
 import AdminLayout from "./components/layouts/adminLayout/AdminLayout";
 import BookDetail from "./pages/books/BookDetail";
+import Movies from "./pages/movies/Movies";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     <Route path="weather" element={<Weather />} />
                     <Route path="news" element={<News />} />
                     <Route path="login" element={<Login />} />
+                    <Route path="movies" element={<Movies />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
 
