@@ -15,8 +15,15 @@ import AdminLayout from "./components/layouts/adminLayout/AdminLayout";
 import BookDetail from "./pages/books/BookDetail";
 import Movies from "./pages/movies/Movies";
 import MovieDetail from "./pages/movies/MovieDetail";
+import { useAuth } from "./contexts/AuthContext";
 
 function App() {
+    const {localLogin} = useAuth();
+
+    useEffect(() => {
+        localLogin();
+    }, [])
+
     return (
         <>
             <Routes>

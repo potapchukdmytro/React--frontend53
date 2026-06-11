@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react"
+import { getCookie, removeCookie, setCookie } from "../services/cookieService";
 
 const AuthContext = createContext();
 
@@ -10,16 +11,32 @@ export function AuthProvider({ children }) {
     function login({email, password, rememberMe}) {
         setIsAuth(true);
         setUser({email: email});
+
+        if(rememberMe) {
+            setCookie("auth", email, 24);
+        } else {
+            setCookie("auth", email);
+        }
+    }
+
+    function localLogin() {
+        const email = getCookie("auth");
+        if(email) {
+            setIsAuth(true);
+            setUser(email);
+            setCookie("auth", email, 24);
+        }
     }
 
     function logout() {
         setIsAuth(false);
         setUser(null);
+        removeCookie("auth");
     }
 
     // value={{ тут вказуємо всі елементи які будуть доступні компонентам що огорнуті нашим провайдером }}
     return (
-        <AuthContext.Provider value={{ login, isAuth, user, logout }}>
+        <AuthContext.Provider value={{ login, isAuth, user, logout, localLogin }}>
             {children}
         </AuthContext.Provider>
     )
