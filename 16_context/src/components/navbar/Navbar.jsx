@@ -1,7 +1,11 @@
 import { Link } from "react-router";
 import "./Navbar.css";
+import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 function Navbar() {
+    const { isAuth, logout } = useAuth();
+
     return (
         <div
             style={{
@@ -21,7 +25,16 @@ function Navbar() {
                     <Link to="/movies" className="nav-link">Фільми</Link>
                 </div>
                 <div>
-                    <Link to="/login" className="nav-link">Увійти</Link>
+                {
+                    isAuth 
+                    ? (
+                        <div>
+                            <Link style={{marginRight: "20px"}} to="/profile" className="nav-link">Профіль</Link>
+                            <Link onClick={logout} className="nav-link">Вийти</Link>
+                        </div>
+                    )
+                    : <Link to="/login" className="nav-link">Увійти</Link>
+                }
                 </div>
         </div>
     );

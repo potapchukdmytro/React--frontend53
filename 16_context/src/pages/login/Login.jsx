@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useRef, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
 
@@ -48,10 +49,13 @@ const errorStyle = {
 
 function Login() {
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     // Наша функція submit
     function formSubmit(values) {
         console.log(values);
+
+        login(values);
 
         // Перекинути на головну сторінку
         navigate("/", {replace: true});
