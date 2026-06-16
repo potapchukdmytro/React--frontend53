@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { env } from "../../env";
 
 // Способи передати дані під час запиту
 // UrlParams або QueryParams (після ? у адресі). Працюють у всіх http методах (get, post, put....)
@@ -50,7 +51,7 @@ function Weather() {
 
     async function fetchWeather(coords = null) {
         const city = "Ужгород";
-        const apiKey = "dd60f517493f0c8255161c7f71e9f923";
+        const apiKey = env.weatherKey;
         const lang = "uk";
         const units = "metric";        
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}&lang=${lang}`;

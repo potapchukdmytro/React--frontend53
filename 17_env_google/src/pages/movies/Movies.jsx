@@ -10,13 +10,15 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import DirectionsIcon from "@mui/icons-material/Directions";
+import { env } from "../../env";
 
 function Movies() {
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("ring");
 
     async function fetchMovies() {
-        const key = "6126fcdb";
+        // Вичитуємо значення з .env файлу
+        const key = env.moviesKey;
         const url = `http://www.omdbapi.com/?apikey=${key}&s=${search}`;
 
         try {

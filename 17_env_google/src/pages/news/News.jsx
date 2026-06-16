@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CircularProgress, Pagination } from "@mui/material";
 import ArticleCard from "../../components/cards/ArticleCard";
 import axios from "axios";
+import { env } from "../../env";
 
 function News() {
     const [news, setNews] = useState([]);
@@ -15,7 +16,7 @@ function News() {
     }
 
     async function fetchNews() {
-        const key = "eef038525fa7401d8dfe7cf1a9006b10";
+        const key = env.newsKey;
         const q = "Технології";
         const lang = "uk";
         const pageSize = "15";
