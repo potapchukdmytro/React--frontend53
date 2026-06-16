@@ -3,6 +3,13 @@ import { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
+import {
+    GoogleOAuthProvider,
+    GoogleLogin,
+    useGoogleLogin,
+} from "@react-oauth/google";
+import { env } from "../../env";
+import { jwtDecode } from "jwt-decode";
 
 const fieldsGroup = {
     display: "flex",
@@ -36,20 +43,20 @@ const submitStyle = {
     width: "75%",
 };
 
-const errorStyle = { 
-    fontSize: "0.7em", 
+const errorStyle = {
+    fontSize: "0.7em",
     color: "coral",
     whiteSpace: "nowrap",
-    textAlign: "start", 
+    textAlign: "start",
     height: "20px",
     textOverflow: "ellipsis",
     overflow: "hidden",
-    lineHeight: "20px"
-}
+    lineHeight: "20px",
+};
 
 function Login() {
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const { login, googleLogin } = useAuth();
 
     // Наша функція submit
     function formSubmit(values) {
@@ -58,7 +65,7 @@ function Login() {
         login(values);
 
         // Перекинути на головну сторінку
-        navigate("/", {replace: true});
+        navigate("/", { replace: true });
     }
 
     const initValues = {
@@ -70,8 +77,13 @@ function Login() {
     const schema = Yup.object({
         email: Yup.string()
             .required("Обов'язкове поле")
-            .matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, "Невірний формат пошти"),
-        password: Yup.string().required("Обов'язкове поле").min(6, "Мінімум 6 символів"),
+            .matches(
+                /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                "Невірний формат пошти",
+            ),
+        password: Yup.string()
+            .required("Обов'язкове поле")
+            .min(6, "Мінімум 6 символів"),
     });
 
     const formik = useFormik({
@@ -80,70 +92,101 @@ function Login() {
         validationSchema: schema,
     });
 
+    // google auth
+    function googleSuccessHandler(response) {
+        const token = response.credential;
+        googleLogin(token);
+        navigate("/", { replace: true });
+    }
+
+    function googleErrorHandler(error) {
+        console.log(error);
+    }
+
     return (
-        <div>
-            <h1>Вхід</h1>
-            <form
-                action="/login"
-                method="get"
-                onSubmit={formik.handleSubmit}
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "33%",
-                    margin: "0px auto",
-                }}
-            >
-                <div style={fieldsGroup}>
-                    <div style={formLabel}>
-                        <label>Пошта</label>
-                    </div>
-                    <input
-                        name="email"
-                        style={formInput}
-                        type="email"
-                        value={formik.values.email}
-                        onChange={formik.handleChange}
-                    />
-                    <div style={errorStyle}>
-                        {formik.errors.email ? formik.errors.email : ""}
-                    </div>
-                </div>
-
-                <div style={fieldsGroup}>
-                    <div style={formLabel}>
-                        <label>Пароль</label>
-                    </div>
-                    <input
-                        name="password"
-                        style={formInput}
-                        type="password"
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
-                    />
-                    <div style={errorStyle}>
-                        {formik.errors.password ? formik.errors.password : ""}
-                    </div>
-                </div>
-
-                <div style={fieldsGroup}>
-                    <div style={formLabel}>
+        <GoogleOAuthProvider clientId={env.googleClientId}>
+            <div>
+                <h1>Вхід</h1>
+                <form
+                    action="/login"
+                    method="get"
+                    onSubmit={formik.handleSubmit}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "33%",
+                        margin: "0px auto",
+                    }}
+                >
+                    <div style={fieldsGroup}>
+                        <div style={formLabel}>
+                            <label>Пошта</label>
+                        </div>
                         <input
-                            name="rememberMe"
-                            style={formCheckbox}
-                            type="checkbox"
-                            checked={formik.values.rememberMe}
+                            name="email"
+                            style={formInput}
+                            type="email"
+                            autoComplete="email"
+                            value={formik.values.email}
                             onChange={formik.handleChange}
                         />
-                        <label>Запам'ятати мене</label>
+                        <div style={errorStyle}>
+                            {formik.errors.email ? formik.errors.email : ""}
+                        </div>
                     </div>
-                </div>
 
-                <div style={{ margin: "15px 0px" }}>
-                    <input style={submitStyle} type="submit" value="Увійти" />
-                </div>
-            </form>
-        </div>
+                    <div style={fieldsGroup}>
+                        <div style={formLabel}>
+                            <label>Пароль</label>
+                        </div>
+                        <input
+                            name="password"
+                            style={formInput}
+                            type="password"
+                            autoComplete="current-password"
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                        />
+                        <div style={errorStyle}>
+                            {formik.errors.password
+                                ? formik.errors.password
+                                : ""}
+                        </div>
+                    </div>
+
+                    <div style={fieldsGroup}>
+                        <div style={formLabel}>
+                            <input
+                                name="rememberMe"
+                                style={formCheckbox}
+                                type="checkbox"
+                                checked={formik.values.rememberMe}
+                                onChange={formik.handleChange}
+                            />
+                            <label>Запам'ятати мене</label>
+                        </div>
+                    </div>
+
+                    <div style={{ margin: "15px 0px" }}>
+                        <input
+                            style={submitStyle}
+                            type="submit"
+                            value="Увійти"
+                        />
+                    </div>
+                    <GoogleLogin
+                        type="standart"
+                        theme="filled_black"
+                        size="large"
+                        text="continue_with"
+                        shape="circle"
+                        logo_alignment="center"
+                        onSuccess={googleSuccessHandler}
+                        onError={googleErrorHandler}
+                    />
+                </form>
+            </div>
+        </GoogleOAuthProvider>
     );
 }
 

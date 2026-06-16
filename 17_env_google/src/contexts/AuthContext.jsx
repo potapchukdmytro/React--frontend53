@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react"
 import { getCookie, removeCookie, setCookie } from "../services/cookieService";
+import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
@@ -10,21 +11,32 @@ export function AuthProvider({ children }) {
 
     function login({email, password, rememberMe}) {
         setIsAuth(true);
-        setUser({email: email});
+        const data = {email: email, avatar: "https://www.svgrepo.com/show/335455/profile-default.svg"};
+        setUser(data);
 
         if(rememberMe) {
-            setCookie("auth", email, 24);
+            setCookie("auth", JSON.stringify(data), 24);
         } else {
-            setCookie("auth", email);
+            setCookie("auth", JSON.stringify(data));
         }
     }
 
+    function googleLogin(token) {
+        const payload = jwtDecode(token);
+        const {email, picture} = payload;
+        setIsAuth(true);
+        const data = {email: email, avatar: picture};
+        setUser(data);
+        setCookie("auth", JSON.stringify(data), 24);
+    }
+
     function localLogin() {
-        const email = getCookie("auth");
-        if(email) {
+        const authJson = getCookie("auth");
+        if(authJson) {
+            const data = JSON.parse(authJson);
             setIsAuth(true);
-            setUser(email);
-            setCookie("auth", email, 24);
+            setUser(data);
+            setCookie("auth", authJson, 24);
         }
     }
 
@@ -36,7 +48,7 @@ export function AuthProvider({ children }) {
 
     // value={{ тут вказуємо всі елементи які будуть доступні компонентам що огорнуті нашим провайдером }}
     return (
-        <AuthContext.Provider value={{ login, isAuth, user, logout, localLogin }}>
+        <AuthContext.Provider value={{ login, isAuth, user, logout, localLogin, googleLogin }}>
             {children}
         </AuthContext.Provider>
     )

@@ -13,9 +13,13 @@ export function getCookie(key) {
     const cookie = document.cookie.split("; ");
 
     for(const c of cookie) {
-        const items = c.split("=");
-        if(items[0] === key) {
-            return items[1];
+        const index = c.indexOf("=");
+        if(index == -1) {
+            return null;
+        }
+        
+        if(c.substring(0, index) === key) {
+            return c.substring(index + 1, c.length);
         }
     }
 

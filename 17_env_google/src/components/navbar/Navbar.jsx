@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
 function Navbar() {
-    const { isAuth, logout } = useAuth();
+    const { isAuth, logout, user } = useAuth();
 
     return (
         <div
@@ -28,7 +28,8 @@ function Navbar() {
                 {
                     isAuth 
                     ? (
-                        <div>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <img style={{marginRight: "20px", borderRadius: "50%"}} alt={user.email} width="40px" height="40px" src={user.avatar}/>
                             <Link style={{marginRight: "20px"}} to="/profile" className="nav-link">Профіль</Link>
                             <Link onClick={logout} className="nav-link">Вийти</Link>
                         </div>
