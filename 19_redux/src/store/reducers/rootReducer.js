@@ -1,6 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { userBalanceReducer } from "./userBalance/userBalancereducer";
+import { userBalanceReducer } from "./userBalance/userBalanceReducer";
+import { bookReducer } from "./book/bookReducer";
 
 export const rootReducer = combineReducers({
-    userBalance: userBalanceReducer
+    userBalance: userBalanceReducer,
+    book: bookReducer
 });
