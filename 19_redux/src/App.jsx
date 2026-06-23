@@ -16,6 +16,7 @@ import BookDetail from "./pages/books/BookDetail";
 import Movies from "./pages/movies/Movies";
 import MovieDetail from "./pages/movies/MovieDetail";
 import { useAuth } from "./contexts/AuthContext";
+import UserBalance from "./pages/userBalance/UserBalance";
 
 function App() {
     const {localLogin} = useAuth();
@@ -38,6 +39,7 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="movies" element={<Movies />} />
                     <Route path="movie/:imdbId" element={<MovieDetail />} />
+                    <Route path="balance" element={<UserBalance />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
 
