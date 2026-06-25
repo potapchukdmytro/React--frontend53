@@ -18,13 +18,14 @@ import MovieDetail from "./pages/movies/MovieDetail";
 import { useAuth } from "./contexts/AuthContext";
 import UserBalance from "./pages/userBalance/UserBalance";
 import CreateBook from "./pages/books/CreateBook";
+import { ToastContainer, Flip } from "react-toastify";
 
 function App() {
-    const {localLogin} = useAuth();
+    const { localLogin } = useAuth();
 
     useEffect(() => {
         localLogin();
-    }, [])
+    }, []);
 
     return (
         <>
@@ -54,6 +55,20 @@ function App() {
                     <Route path="roles" element={<h1>Test roles</h1>} />
                 </Route>
             </Routes>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Flip}
+            />
         </>
     );
 }

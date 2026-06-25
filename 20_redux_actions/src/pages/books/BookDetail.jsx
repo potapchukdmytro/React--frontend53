@@ -60,7 +60,7 @@ function BookDetail() {
                         height="500px"
                         width="400px"
                         onError={imageError}
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: "contain", marginRight: "16px" }}
                     />
                 </div>
                 <div

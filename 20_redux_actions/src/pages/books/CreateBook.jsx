@@ -4,6 +4,7 @@ import { useAction } from "../../components/hooks/useAction";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
+import { toast } from "react-toastify";
 
 const fieldsGroup = {
     display: "flex",
@@ -64,9 +65,10 @@ function CreateBook() {
     async function submitHandler(values) {        
         const res = await createBook(values);
         if (res) {
+            toast.success("Книга успішно додана");
             navigate("/");
         } else {
-            console.log("Помилка при додаванні книги");
+            toast.error("Помилка під час додавання книги");
         }
     }
 
