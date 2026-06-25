@@ -115,7 +115,7 @@ function BookDetail() {
                         </div>
                     </div>
                     <h1>{book.title}</h1>
-                    <h3>Автор: {book.author.name}</h3>
+                    <h3>Автор: {book.author ? book.author.name : "Невідомий"}</h3>
                     <p>Рік публікації: <b>{book.publish_date}</b></p>
                     <p>Сторінок: <b>{book.number_of_pages}</b></p>
                     <h3

@@ -70,7 +70,7 @@ function BookCard({ book }) {
                 </div>
             </Link>
             <div style={{ textAlign: "start", fontSize: "0.7em" }}>
-                {book.author.name}
+                {book.author ? book.author.name : "Невідомий"}
             </div>
             <div style={{ display: "flex" }}>
                 <div>

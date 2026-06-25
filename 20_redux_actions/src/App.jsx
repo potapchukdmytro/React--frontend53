@@ -17,6 +17,7 @@ import Movies from "./pages/movies/Movies";
 import MovieDetail from "./pages/movies/MovieDetail";
 import { useAuth } from "./contexts/AuthContext";
 import UserBalance from "./pages/userBalance/UserBalance";
+import CreateBook from "./pages/books/CreateBook";
 
 function App() {
     const {localLogin} = useAuth();
@@ -33,6 +34,7 @@ function App() {
                     <Route index element={<Books />} />
                     {/* :id - url параметер */}
                     <Route path="book/:id" element={<BookDetail />} />
+                    <Route path="book/create" element={<CreateBook />} />
                     <Route path="cats" element={<CatsPage />} />
                     <Route path="weather" element={<Weather />} />
                     <Route path="news" element={<News />} />

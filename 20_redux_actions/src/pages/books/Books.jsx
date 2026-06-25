@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
 import { useAction } from "../../components/hooks/useAction";
 import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router";
 
 function Books() {
     const [page, setPage] = useState(1);
@@ -71,9 +72,11 @@ function Books() {
                             />
                         </div>
                         <div style={{ flexGrow: 0 }}>
-                            <IconButton>
-                                <AddIcon />
-                            </IconButton>
+                            <Link to="/book/create">
+                                <IconButton>
+                                    <AddIcon />
+                                </IconButton>
+                            </Link>
                         </div>
                     </div>
                 </>
