@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import BookCard from "../../components/cards/BookCard";
 import booksJson from "./booksData.json";
-import { CircularProgress, Pagination } from "@mui/material";
+import { CircularProgress, Pagination, IconButton } from "@mui/material";
 import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
 import { useAction } from "../../components/hooks/useAction";
+import AddIcon from "@mui/icons-material/Add";
 
 function Books() {
     const [page, setPage] = useState(1);
-    const { isLoaded, books, isLoading, pageCount } = useSelector((state) => state.book);
+    const { isLoaded, books, isLoading, pageCount } = useSelector(
+        (state) => state.book,
+    );
     const { loadBooks } = useAction();
 
     function paginationChangeHandler(event, value) {
         setPage(value);
         window.scrollTo({
             top: 0,
-            behavior: "smooth"
+            behavior: "smooth",
         });
     }
 
@@ -25,7 +28,7 @@ function Books() {
 
     // Спінер
     if (isLoading) {
-        return <Spiner />
+        return <Spiner />;
     }
 
     // Книги
@@ -52,12 +55,26 @@ function Books() {
                             margin: "40px 20px",
                         }}
                     >
-                        <Pagination
-                            color="warning"
-                            page={page}
-                            count={pageCount}
-                            onChange={paginationChangeHandler}
-                        />
+                        <div
+                            style={{
+                                flexGrow: 1,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <Pagination
+                                color="warning"
+                                page={page}
+                                count={pageCount}
+                                onChange={paginationChangeHandler}
+                            />
+                        </div>
+                        <div style={{ flexGrow: 0 }}>
+                            <IconButton>
+                                <AddIcon />
+                            </IconButton>
+                        </div>
                     </div>
                 </>
             ) : (
