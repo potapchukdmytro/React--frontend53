@@ -1,66 +1,47 @@
 import { IconButton, Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import NotFound from "../notFound/NotFound";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import axios from "axios";
+import Spiner from "../../components/spiner/Spiner";
+import defaultImg from "./default.png";
 
 function BookDetail() {
     const [book, setBook] = useState(null);
+    const navigate = useNavigate();
 
     const { id } = useParams();
-    window.scrollTo(0, 0);
 
-    useEffect(() => {
-        const booksLocal = localStorage.getItem("books");
-        if (!booksLocal) {
-            return <NotFound />;
-        }
+    async function fetchBook() {
+        const url = `https://frontend53.somee.com/api/books/${id}`;
 
-        const books = JSON.parse(booksLocal);
-        const data = books.find((b) => b.id == id);
-
-        if (!data) {
-            return <NotFound />;
-        }
-
-        setBook(data);
-    }, []);
-
-    function switchIsFavorite() {
-        const newFavorite = !book.isFavorite;
-        setBook({...book, isFavorite: newFavorite});
-
-        const booksJson = localStorage.getItem("books");
-        if (booksJson) {
-            let books = JSON.parse(booksJson);
-            const index = books.findIndex((b) => b.id === book.id);
-            if (index !== -1) {
-                books[index].isFavorite = newFavorite;
-                localStorage.setItem("books", JSON.stringify(books));
-            }
+        try {
+            const response = await axios.get(url);
+            const { data } = response;
+            setBook(data.payload);
+        } catch (error) {
+            navigate(-1, { replace: true });
         }
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        fetchBook();
+    }, []);
+
+    function imageError(event) {
+        const img = event.target;
+        img.src = defaultImg;
+    }
+
     if (!book) {
-        return (
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "50px",
-                }}
-            >
-                <CircularProgress
-                    size="3rem"
-                    aria-label="Loading…"
-                    color="warning"
-                />
-            </div>
-        );
+        return <Spiner />;
     }
 
     return (
@@ -74,10 +55,11 @@ function BookDetail() {
             >
                 <div style={{ textAlign: "right" }}>
                     <img
-                        src={book.cover}
+                        src={book.image}
                         alt={book.title}
                         height="500px"
                         width="400px"
+                        onError={imageError}
                         style={{ objectFit: "contain" }}
                     />
                 </div>
@@ -113,7 +95,7 @@ function BookDetail() {
                             }
                         />
                         <div>
-                            <IconButton onClick={switchIsFavorite}>
+                            {/* <IconButton onClick={switchIsFavorite}>
                                 {book.isFavorite ? (
                                     <FavoriteIcon
                                         style={{ color: "pink" }}
@@ -125,11 +107,17 @@ function BookDetail() {
                                         fontSize="large"
                                     />
                                 )}
-                            </IconButton>
+                            </IconButton> */}
+                            <FavoriteBorderIcon
+                                style={{ color: "pink" }}
+                                fontSize="large"
+                            />
                         </div>
                     </div>
                     <h1>{book.title}</h1>
-                    <h3>Автор: {book.author}</h3>
+                    <h3>Автор: {book.author.name}</h3>
+                    <p>Рік публікації: <b>{book.publish_date}</b></p>
+                    <p>Сторінок: <b>{book.number_of_pages}</b></p>
                     <h3
                         style={{
                             fontWeight: "bold",
@@ -137,7 +125,7 @@ function BookDetail() {
                             fontSize: "1.4em",
                         }}
                     >
-                        Ціна: ${book.price}
+                        Ціна: {book.price} грн.
                     </h3>
                     <div style={{ maxWidth: "400px", whiteSpace: "normal" }}>
                         <p>{book.description}</p>

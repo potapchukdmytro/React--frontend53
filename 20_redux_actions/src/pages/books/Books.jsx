@@ -1,71 +1,65 @@
 import { useState, useEffect } from "react";
 import BookCard from "../../components/cards/BookCard";
 import booksJson from "./booksData.json";
-import { CircularProgress } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+import { CircularProgress, Pagination } from "@mui/material";
+import { useSelector } from "react-redux";
+import Spiner from "../../components/spiner/Spiner";
+import { useAction } from "../../components/hooks/useAction";
 
 function Books() {
-    const { isLoaded, books, isLoading } = useSelector((state) => state.book);
-    const dispatch = useDispatch();
+    const [page, setPage] = useState(1);
+    const { isLoaded, books, isLoading, pageCount } = useSelector((state) => state.book);
+    const { loadBooks } = useAction();
 
-    async function fetchBooks() {
-        const url = "https://frontend53.somee.com/api/books";
-
-        dispatch({ type: "loading_books" });
-
-        try {
-            const response = await axios.get(url);
-            const { data } = response;
-
-            dispatch({
-                type: "get_books_success",
-                payload: data.payload.items,
-            });
-        } catch (error) {
-            dispatch({ type: "get_books_error" });
-        }
+    function paginationChangeHandler(event, value) {
+        setPage(value);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 
     useEffect(() => {
-        fetchBooks();
-    }, []);
+        loadBooks(page);
+    }, [page]);
 
     // Спінер
     if (isLoading) {
-        return (
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "50px",
-                }}
-            >
-                <CircularProgress
-                    size="3rem"
-                    aria-label="Loading…"
-                    color="warning"
-                />
-            </div>
-        );
+        return <Spiner />
     }
 
     // Книги
     return (
         <>
             {isLoaded ? (
-                <div
-                    style={{
-                        margin: "16px 0px",
-                        display: "grid",
-                        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-                        gap: "10px",
-                    }}
-                >
-                    {books.map((book, index) => (
-                        <BookCard key={index} book={book} />
-                    ))}
-                </div>
+                <>
+                    <div
+                        style={{
+                            margin: "16px 0px",
+                            display: "grid",
+                            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                            gap: "10px",
+                        }}
+                    >
+                        {books.map((book, index) => (
+                            <BookCard key={index} book={book} />
+                        ))}
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            margin: "40px 20px",
+                        }}
+                    >
+                        <Pagination
+                            color="warning"
+                            page={page}
+                            count={pageCount}
+                            onChange={paginationChangeHandler}
+                        />
+                    </div>
+                </>
             ) : (
                 <h2 style={{ textAlign: "center" }}>
                     Помилка під час отримання книг. Спробуйте пізніше
@@ -74,42 +68,5 @@ function Books() {
         </>
     );
 }
-
-// function Books() {
-//     return (
-//         <>
-//             {books.length === 0 ? (
-//                 // спінер
-//                 <div
-//                     style={{
-//                         display: "flex",
-//                         justifyContent: "center",
-//                         marginTop: "50px",
-//                     }}
-//                 >
-//                     <CircularProgress
-//                         size="3rem"
-//                         aria-label="Loading…"
-//                         color="warning"
-//                     />
-//                 </div>
-//             ) : (
-//                 // книги
-//                 <div
-//                     style={{
-//                         margin: "16px 0px",
-//                         display: "grid",
-//                         gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-//                         gap: "10px",
-//                     }}
-//                 >
-//                     {books.map((book, index) => (
-//                         <BookCard key={index} book={book} />
-//                     ))}
-//                 </div>
-//             )}
-//         </>
-//     );
-// }
 
 export default Books;
