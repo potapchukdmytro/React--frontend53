@@ -4,16 +4,22 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useNavigate, useParams } from "react-router";
 import NotFound from "../notFound/NotFound";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import Spiner from "../../components/spiner/Spiner";
 import defaultImg from "./default.png";
+import { toast } from "react-toastify";
+import DeleteModal from "../../components/modals/DeleteModal";
+import { useAction } from "./../../hooks/useAction";
 
 function BookDetail() {
     const [book, setBook] = useState(null);
     const navigate = useNavigate();
+    const { deleteBook } = useAction();
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const { id } = useParams();
 
@@ -28,6 +34,51 @@ function BookDetail() {
             navigate(-1, { replace: true });
         }
     }
+
+    function switchFavorite() {
+        const value = !isFavorite;
+        setIsFavorite(value);
+        if(value) {
+            const localFavorite = localStorage.getItem("favorite");
+            let items = [];
+            if(localFavorite) {
+                items = JSON.parse(localFavorite);
+            }
+            items.push(id);
+            localStorage.setItem("favorite", JSON.stringify(items));
+        } else {
+            const localFavorite = localStorage.getItem("favorite");
+            if(localFavorite) {
+                const items = JSON.parse(localFavorite);
+                const newItems = items.filter(i => i != id);
+                localStorage.setItem("favorite", JSON.stringify(newItems));
+            }
+        }
+    }
+
+    // delete book
+    async function handleDeleteBok() {
+        const res = await deleteBook(id);
+        if (res) {
+            toast.success("Книгу успішно видалено");
+            navigate("/", { replace: true });
+        } else {
+            toast.error("Не вдалося видалити книгу");
+        }
+    }
+
+    const notify = () => {
+        toast(
+            (props) => (
+                <DeleteModal deleteCallback={handleDeleteBok} {...props} />
+            ),
+            {
+                closeButton: false,
+                ariaLabel: "Delete book",
+                position: "bottom-center",
+            },
+        );
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -95,8 +146,8 @@ function BookDetail() {
                             }
                         />
                         <div>
-                            {/* <IconButton onClick={switchIsFavorite}>
-                                {book.isFavorite ? (
+                            <IconButton onClick={switchFavorite}>
+                                {isFavorite ? (
                                     <FavoriteIcon
                                         style={{ color: "pink" }}
                                         fontSize="large"
@@ -107,17 +158,19 @@ function BookDetail() {
                                         fontSize="large"
                                     />
                                 )}
-                            </IconButton> */}
-                            <FavoriteBorderIcon
-                                style={{ color: "pink" }}
-                                fontSize="large"
-                            />
+                            </IconButton>
                         </div>
                     </div>
                     <h1>{book.title}</h1>
-                    <h3>Автор: {book.author ? book.author.name : "Невідомий"}</h3>
-                    <p>Рік публікації: <b>{book.publish_date}</b></p>
-                    <p>Сторінок: <b>{book.number_of_pages}</b></p>
+                    <h3>
+                        Автор: {book.author ? book.author.name : "Невідомий"}
+                    </h3>
+                    <p>
+                        Рік публікації: <b>{book.publish_date}</b>
+                    </p>
+                    <p>
+                        Сторінок: <b>{book.number_of_pages}</b>
+                    </p>
                     <h3
                         style={{
                             fontWeight: "bold",
@@ -129,6 +182,11 @@ function BookDetail() {
                     </h3>
                     <div style={{ maxWidth: "400px", whiteSpace: "normal" }}>
                         <p>{book.description}</p>
+                    </div>
+                    <div style={{ marginTop: "64px", textAlign: "right" }}>
+                        <IconButton onClick={notify}>
+                            <DeleteIcon fontSize="large" color="error" />
+                        </IconButton>
                     </div>
                 </div>
             </div>

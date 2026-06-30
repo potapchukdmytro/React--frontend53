@@ -27,3 +27,13 @@ export const createBook = (book) => async (dispatch) => {
         return false;
     }
 };
+
+export const deleteBook = (id)  => async(dispatch) => {
+    try {
+        const response = await api.delete(`books/${id}`);
+        dispatch({ type: "delete_book" });
+        return true;
+    } catch (error) {
+        return false;
+    }
+}

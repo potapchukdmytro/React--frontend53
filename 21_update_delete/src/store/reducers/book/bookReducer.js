@@ -20,7 +20,9 @@ export function bookReducer(state = initState, action) {
         case "get_books_error":
             return { ...state, isLoaded: false, isLoading: false };
         case "post_book":
-            return  state;
+            return state;
+        case "delete_book":
+            return { ...state, isLoaded: false, isLoading: false };
         default:
             return state;
     }
