@@ -1,11 +1,12 @@
 import { IconButton, Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import NotFound from "../notFound/NotFound";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import EditIcon from "@mui/icons-material/Edit";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
@@ -37,19 +38,19 @@ function BookDetail() {
     function switchFavorite() {
         const value = !isFavorite;
         setIsFavorite(value);
-        if(value) {
+        if (value) {
             const localFavorite = localStorage.getItem("favorite");
             let items = [];
-            if(localFavorite) {
+            if (localFavorite) {
                 items = JSON.parse(localFavorite);
             }
             items.push(id);
             localStorage.setItem("favorite", JSON.stringify(items));
         } else {
             const localFavorite = localStorage.getItem("favorite");
-            if(localFavorite) {
+            if (localFavorite) {
                 const items = JSON.parse(localFavorite);
-                const newItems = items.filter(i => i != id);
+                const newItems = items.filter((i) => i != id);
                 localStorage.setItem("favorite", JSON.stringify(newItems));
             }
         }
@@ -84,9 +85,9 @@ function BookDetail() {
         fetchBook();
 
         const localData = localStorage.getItem("favorite");
-        if(localData) {
+        if (localData) {
             const items = JSON.parse(localData);
-            if(items.some(i => i == id)) {
+            if (items.some((i) => i == id)) {
                 setIsFavorite(true);
             }
         }
@@ -190,6 +191,11 @@ function BookDetail() {
                         <p>{book.description}</p>
                     </div>
                     <div style={{ marginTop: "64px", textAlign: "right" }}>
+                        <Link to={`/book/update/${id}`}>
+                            <IconButton>
+                                <EditIcon fontSize="large" color="success" />
+                            </IconButton>
+                        </Link>
                         <IconButton onClick={notify}>
                             <DeleteIcon fontSize="large" color="error" />
                         </IconButton>

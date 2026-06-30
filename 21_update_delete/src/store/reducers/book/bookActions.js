@@ -28,6 +28,17 @@ export const createBook = (book) => async (dispatch) => {
     }
 };
 
+export const updateBook = (book) => async (dispatch) => {
+    console.log(book);
+    try {
+        const response = await api.put("books", book);
+        dispatch({ type: "put_book" });
+        return true;
+    } catch (error) {
+        return false;
+    }
+};
+
 export const deleteBook = (id)  => async(dispatch) => {
     try {
         const response = await api.delete(`books/${id}`);
