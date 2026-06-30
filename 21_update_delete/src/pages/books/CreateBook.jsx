@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useEffect } from "react";
-import { useAction } from "../../components/hooks/useAction";
+import { useAction } from "../../hooks/useAction";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";

@@ -1,12 +1,10 @@
-import axios from "axios";
+import { api } from "../../../api";
 
 export const loadBooks = (page = 1) => async (dispatch) => {
-        const url = `https://frontend53.somee.com/api/books?page=${page}`;
-
         dispatch({ type: "loading_books" });
 
         try {
-            const response = await axios.get(url);
+            const response = await api.get(`books?page=${page}`);
             const { data } = response;
             dispatch({
                 type: "get_books_success",
@@ -21,10 +19,8 @@ export const loadBooks = (page = 1) => async (dispatch) => {
     };
 
 export const createBook = (book) => async (dispatch) => {
-    const url = "https://frontend53.somee.com/api/books";
-
     try {
-        const response = await axios.post(url, book);
+        const response = await api.post("books", book);
         dispatch({ type: "post_book" });
         return true;
     } catch (error) {

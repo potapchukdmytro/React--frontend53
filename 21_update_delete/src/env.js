@@ -7,5 +7,6 @@ export const env = {
     moviesKey: import.meta.env.VITE_MOVIES_KEY,
     newsKey: import.meta.env.VITE_NEWS_KEY,
     weatherKey: import.meta.env.VITE_WEATHER_KEY,
-    googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID
+    googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+    apiUrl: import.meta.env.VITE_API_URL
 };

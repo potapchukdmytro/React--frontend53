@@ -4,7 +4,7 @@ import booksJson from "./booksData.json";
 import { CircularProgress, Pagination, IconButton } from "@mui/material";
 import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
-import { useAction } from "../../components/hooks/useAction";
+import { useAction } from "./../../hooks/useAction";
 import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router";
 
