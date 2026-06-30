@@ -5,12 +5,47 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./BookCard.css";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
 function BookCard({ book }) {
+    const [isFavorite, setIsFavorite] = useState(false);
+
     function imageError(event) {
         const img = event.target;
-        img.src = "https://apuedge.com/wp-content/uploads/READ-book-club-Smithsonian-Kannady.jpg";
+        img.src =
+            "https://apuedge.com/wp-content/uploads/READ-book-club-Smithsonian-Kannady.jpg";
     }
+
+    function switchFavorite() {
+        const value = !isFavorite;
+        setIsFavorite(value);
+        if (value) {
+            const localFavorite = localStorage.getItem("favorite");
+            let items = [];
+            if (localFavorite) {
+                items = JSON.parse(localFavorite);
+            }
+            items.push(book.id);
+            localStorage.setItem("favorite", JSON.stringify(items));
+        } else {
+            const localFavorite = localStorage.getItem("favorite");
+            if (localFavorite) {
+                const items = JSON.parse(localFavorite);
+                const newItems = items.filter((i) => i != book.id);
+                localStorage.setItem("favorite", JSON.stringify(newItems));
+            }
+        }
+    }
+
+    useEffect(() => {
+        const localData = localStorage.getItem("favorite");
+        if (localData) {
+            const items = JSON.parse(localData);
+            if (items.some((i) => i == book.id)) {
+                setIsFavorite(true);
+            }
+        }
+    }, []);
 
     return (
         <div
@@ -74,15 +109,12 @@ function BookCard({ book }) {
             </div>
             <div style={{ display: "flex" }}>
                 <div>
-                    {/* <IconButton onClick={switchIsFavorite}>
-                        {book.isFavorite ? (
+                    <IconButton onClick={switchFavorite}>
+                        {isFavorite ? (
                             <FavoriteIcon style={{ color: "pink" }} />
                         ) : (
                             <FavoriteBorderIcon style={{ color: "pink" }} />
                         )}
-                    </IconButton> */}
-                    <IconButton>
-                        <FavoriteBorderIcon style={{ color: "pink" }} />
                     </IconButton>
                 </div>
                 <div

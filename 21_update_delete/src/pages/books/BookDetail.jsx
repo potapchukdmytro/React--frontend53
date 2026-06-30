@@ -14,6 +14,7 @@ import defaultImg from "./default.png";
 import { toast } from "react-toastify";
 import DeleteModal from "../../components/modals/DeleteModal";
 import { useAction } from "./../../hooks/useAction";
+import { api } from "../../api";
 
 function BookDetail() {
     const [book, setBook] = useState(null);
@@ -24,10 +25,8 @@ function BookDetail() {
     const { id } = useParams();
 
     async function fetchBook() {
-        const url = `https://frontend53.somee.com/api/books/${id}`;
-
         try {
-            const response = await axios.get(url);
+            const response = await api.get(`books/${id}`);
             const { data } = response;
             setBook(data.payload);
         } catch (error) {
@@ -82,8 +81,15 @@ function BookDetail() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-
         fetchBook();
+
+        const localData = localStorage.getItem("favorite");
+        if(localData) {
+            const items = JSON.parse(localData);
+            if(items.some(i => i == id)) {
+                setIsFavorite(true);
+            }
+        }
     }, []);
 
     function imageError(event) {
