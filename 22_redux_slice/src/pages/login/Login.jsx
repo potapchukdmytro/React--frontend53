@@ -13,6 +13,7 @@ import { api } from "./../../api";
 import { login } from "../../store/slices/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { setCookie } from "../../services/cookieService";
+import { toast } from "react-toastify";
 
 const fieldsGroup = {
     display: "flex",
@@ -58,6 +59,7 @@ const errorStyle = {
 };
 
 function Login() {
+    const [loginError, setLoginError] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -68,18 +70,21 @@ function Login() {
             const { data } = response;
             const token = data.payload;
 
-            if(values.rememberMe) {
+            if (values.rememberMe) {
                 setCookie("ujta", token, 24);
             } else {
                 setCookie("ujta", token);
             }
 
-            dispatch(login(token))
+            dispatch(login(token));
+            // Перекинути на головну сторінку
+            navigate("/", { replace: true });
         } catch (error) {
-            console.log(error);
+            const { response } = error;
+            const { data } = response;
+            toast.error(data.message);
+            setLoginError(data.message);
         }
-        // Перекинути на головну сторінку
-        navigate("/", { replace: true });
     }
 
     const initValues = {
@@ -179,6 +184,14 @@ function Login() {
                             />
                             <label>Запам'ятати мене</label>
                         </div>
+                    </div>
+
+                    <div>
+                        <span
+                            style={errorStyle}
+                        >
+                            {loginError}
+                        </span>
                     </div>
 
                     <div style={{ margin: "15px 0px" }}>
