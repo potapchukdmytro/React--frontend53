@@ -1,10 +1,17 @@
 import { Link } from "react-router";
 import "./Navbar.css";
 import { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/slices/auth/authSlice";
+import defaultAvatar from "./avatar.png";
 
 function Navbar() {
-    const { isAuth, logout, user } = useAuth();
+    const dispatch = useDispatch();
+    const {isAuth, user} = useSelector((state) => state.auth);
+
+    function logoutHandler() {
+        dispatch(logout());
+    }
 
     return (
         <div
@@ -29,9 +36,10 @@ function Navbar() {
                     isAuth 
                     ? (
                         <div style={{display: "flex", alignItems: "center"}}>
-                            <img style={{marginRight: "20px", borderRadius: "50%"}} alt={user.email} width="40px" height="40px" src={user.avatar}/>
-                            <Link style={{marginRight: "20px"}} to="/profile" className="nav-link">Профіль</Link>
-                            <Link onClick={logout} className="nav-link">Вийти</Link>
+                            <Link style={{marginRight: "20px"}} to="/profile" className="nav-link">
+                                <img style={{marginRight: "20px", borderRadius: "50%"}} alt={user.email} width="40px" height="40px" src={user.avatar ? user.avatar : defaultAvatar}/>
+                            </Link>
+                            <Link onClick={logoutHandler} className="nav-link">Вийти</Link>
                         </div>
                     )
                     : <Link to="/login" className="nav-link">Увійти</Link>

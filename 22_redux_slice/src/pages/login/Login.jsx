@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import { useRef, useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import {
@@ -10,6 +9,10 @@ import {
 } from "@react-oauth/google";
 import { env } from "../../env";
 import { jwtDecode } from "jwt-decode";
+import { api } from "./../../api";
+import { login } from "../../store/slices/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { setCookie } from "../../services/cookieService";
 
 const fieldsGroup = {
     display: "flex",
@@ -56,14 +59,25 @@ const errorStyle = {
 
 function Login() {
     const navigate = useNavigate();
-    const { login, googleLogin } = useAuth();
+    const dispatch = useDispatch();
 
     // Наша функція submit
-    function formSubmit(values) {
-        console.log(values);
+    async function formSubmit(values) {
+        try {
+            const response = await api.post("auth/login", values);
+            const { data } = response;
+            const token = data.payload;
 
-        login(values);
+            if(values.rememberMe) {
+                setCookie("ujta", token, 24);
+            } else {
+                setCookie("ujta", token);
+            }
 
+            dispatch(login(token))
+        } catch (error) {
+            console.log(error);
+        }
         // Перекинути на головну сторінку
         navigate("/", { replace: true });
     }

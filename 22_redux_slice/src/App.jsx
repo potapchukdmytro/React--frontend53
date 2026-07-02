@@ -15,17 +15,22 @@ import AdminLayout from "./components/layouts/adminLayout/AdminLayout";
 import BookDetail from "./pages/books/BookDetail";
 import Movies from "./pages/movies/Movies";
 import MovieDetail from "./pages/movies/MovieDetail";
-import { useAuth } from "./contexts/AuthContext";
 import UserBalance from "./pages/userBalance/UserBalance";
 import CreateBook from "./pages/books/CreateBook";
 import { ToastContainer, Flip } from "react-toastify";
 import UpdateBook from "./pages/books/UpdateBook";
+import { useDispatch } from "react-redux";
+import { getCookie } from "./services/cookieService";
+import { login } from "./store/slices/auth/authSlice";
 
 function App() {
-    const { localLogin } = useAuth();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        localLogin();
+        const token = getCookie("ujta");
+        if(token) {
+            dispatch(login(token));
+        }
     }, []);
 
     return (
