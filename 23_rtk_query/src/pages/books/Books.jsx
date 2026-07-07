@@ -2,18 +2,15 @@ import { useState, useEffect } from "react";
 import BookCard from "../../components/cards/BookCard";
 import booksJson from "./booksData.json";
 import { CircularProgress, Pagination, IconButton } from "@mui/material";
-import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
-import { useAction } from "./../../hooks/useAction";
 import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router";
+import { useGetBooksQuery } from "../../store/services/bookApi";
 
 function Books() {
     const [page, setPage] = useState(1);
-    const { isLoaded, books, isLoading, pageCount } = useSelector(
-        (state) => state.book,
-    );
-    const { loadBooks } = useAction();
+
+    const { data, isLoading, isSuccess, isError } = useGetBooksQuery();
 
     function paginationChangeHandler(event, value) {
         setPage(value);
@@ -23,19 +20,25 @@ function Books() {
         });
     }
 
-    useEffect(() => {
-        loadBooks(page);
-    }, [page]);
+    useEffect(() => {}, [page]);
 
     // Спінер
     if (isLoading) {
         return <Spiner />;
     }
 
+    if (isError) {
+        return (
+            <h2 style={{ textAlign: "center" }}>
+                Помилка під час отримання книг. Спробуйте пізніше
+            </h2>
+        );
+    }
+
     // Книги
     return (
         <>
-            {isLoaded ? (
+            {isSuccess && (
                 <>
                     <div
                         style={{
@@ -45,7 +48,7 @@ function Books() {
                             gap: "10px",
                         }}
                     >
-                        {books.map((book, index) => (
+                        {data.payload.items.map((book, index) => (
                             <BookCard key={index} book={book} />
                         ))}
                     </div>
@@ -67,7 +70,7 @@ function Books() {
                             <Pagination
                                 color="warning"
                                 page={page}
-                                count={pageCount}
+                                count={20}
                                 onChange={paginationChangeHandler}
                             />
                         </div>
@@ -80,10 +83,6 @@ function Books() {
                         </div>
                     </div>
                 </>
-            ) : (
-                <h2 style={{ textAlign: "center" }}>
-                    Помилка під час отримання книг. Спробуйте пізніше
-                </h2>
             )}
         </>
     );

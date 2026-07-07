@@ -3,10 +3,12 @@ import { userBalanceReducer } from "./userBalance/userBalanceReducer";
 import { bookReducer } from "./book/bookReducer";
 import { authorReducer } from "./author/authorReducer";
 import authReducer from "./../slices/auth/authSlice";
+import { bookApi } from "../services/bookApi";
 
 export const rootReducer = combineReducers({
     userBalance: userBalanceReducer,
-    book: bookReducer,
+    booksOld: bookReducer,
     author: authorReducer,
-    auth: authReducer
+    auth: authReducer,
+    [bookApi.reducerPath]: bookApi.reducer
 });
