@@ -16,12 +16,13 @@ import { toast } from "react-toastify";
 import DeleteModal from "../../components/modals/DeleteModal";
 import { useAction } from "./../../hooks/useAction";
 import { api } from "../../api";
+import { useDeleteBookMutation } from "../../store/services/bookApi";
 
 function BookDetail() {
     const [book, setBook] = useState(null);
     const navigate = useNavigate();
-    const { deleteBook } = useAction();
     const [isFavorite, setIsFavorite] = useState(false);
+    const [deleteBook] = useDeleteBookMutation();
 
     const { id } = useParams();
 
@@ -59,7 +60,7 @@ function BookDetail() {
     // delete book
     async function handleDeleteBok() {
         const res = await deleteBook(id);
-        if (res) {
+        if (res.data.success) {
             toast.success("Книгу успішно видалено");
             navigate("/", { replace: true });
         } else {

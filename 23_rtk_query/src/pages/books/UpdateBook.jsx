@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
 import { toast } from "react-toastify";
 import { api } from "../../api";
+import { useUpdateBookMutation } from "../../store/services/bookApi";
 
 const fieldsGroup = {
     display: "flex",
@@ -52,12 +53,13 @@ const errorStyle = {
 
 function UpdateBook() {
     const [book, setBook] = useState(null);
-    const { updateBook } = useAction();
     const navigate = useNavigate();
     const { loadAuthors } = useAction();
     const { authors, isLoading, isLoaded } = useSelector(
         (state) => state.author,
     );
+
+    const [updateBook] = useUpdateBookMutation();
 
     const { id } = useParams();
 
@@ -92,9 +94,10 @@ function UpdateBook() {
         fetchBook();
     }, []);
 
-    async function submitHandler(values) {
+    async function submitHandler(values) {        
         const res = await updateBook({...values, id: id});
-        if (res) {
+        
+        if (res.data.success) {
             toast.success("Книгу успішно змінено");
             navigate(-1);
         } else {

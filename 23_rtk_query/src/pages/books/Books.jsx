@@ -10,7 +10,7 @@ import { useGetBooksQuery } from "../../store/services/bookApi";
 function Books() {
     const [page, setPage] = useState(1);
 
-    const { data, isLoading, isSuccess, isError } = useGetBooksQuery();
+    const { data, isLoading, isSuccess, isError } = useGetBooksQuery({page_size: 120});
 
     function paginationChangeHandler(event, value) {
         setPage(value);

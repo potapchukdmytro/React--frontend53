@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import Spiner from "../../components/spiner/Spiner";
 import { toast } from "react-toastify";
+import { useCreateBookMutation } from "../../store/services/bookApi";
 
 const fieldsGroup = {
     display: "flex",
@@ -50,24 +51,32 @@ const errorStyle = {
 };
 
 function CreateBook() {
-    const { createBook } = useAction();
     const navigate = useNavigate();
     const { loadAuthors } = useAction();
-    const { authors, isLoading, isLoaded } = useSelector(
-        (state) => state.author,
-    );
+    const {
+        authors,
+        isLoading: authorsLoading,
+        isLoaded,
+    } = useSelector((state) => state.author);
+
+    const [createBook] = useCreateBookMutation();
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
         loadAuthors();
     }, []);
 
-    async function submitHandler(values) {        
-        const res = await createBook(values);
-        if (res) {
-            toast.success("Книга успішно додана");
-            navigate("/");
-        } else {
+    async function submitHandler(values) {
+        try {
+            // unwrap - говорить rtk викинути помилку на ззовні що дає змогу краще її обробити власним try catch
+            const res = await createBook(values).unwrap();
+            if (res.data.success) {
+                toast.success("Книга успішно додана");
+                navigate("/");
+            } else {
+                toast.error("Помилка під час додавання книги");
+            }
+        } catch (error) {
             toast.error("Помилка під час додавання книги");
         }
     }
@@ -88,7 +97,7 @@ function CreateBook() {
         onSubmit: submitHandler,
     });
 
-    if (isLoading) {
+    if (authorsLoading) {
         return <Spiner />;
     }
 
