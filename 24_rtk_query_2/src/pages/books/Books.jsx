@@ -1,0 +1,91 @@
+import { useState, useEffect } from "react";
+import BookCard from "../../components/cards/BookCard";
+import booksJson from "./booksData.json";
+import { CircularProgress, Pagination, IconButton } from "@mui/material";
+import Spiner from "../../components/spiner/Spiner";
+import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router";
+import { useGetBooksQuery } from "../../store/services/bookApi";
+
+function Books() {
+    const [page, setPage] = useState(1);
+
+    const { data, isLoading, isSuccess, isError } = useGetBooksQuery({page_size: 120});
+
+    function paginationChangeHandler(event, value) {
+        setPage(value);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+
+    useEffect(() => {}, [page]);
+
+    // Спінер
+    if (isLoading) {
+        return <Spiner />;
+    }
+
+    if (isError) {
+        return (
+            <h2 style={{ textAlign: "center" }}>
+                Помилка під час отримання книг. Спробуйте пізніше
+            </h2>
+        );
+    }
+
+    // Книги
+    return (
+        <>
+            {isSuccess && (
+                <>
+                    <div
+                        style={{
+                            margin: "16px 0px",
+                            display: "grid",
+                            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                            gap: "10px",
+                        }}
+                    >
+                        {data.payload.items.map((book, index) => (
+                            <BookCard key={index} book={book} />
+                        ))}
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            margin: "40px 20px",
+                        }}
+                    >
+                        <div
+                            style={{
+                                flexGrow: 1,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <Pagination
+                                color="warning"
+                                page={page}
+                                count={20}
+                                onChange={paginationChangeHandler}
+                            />
+                        </div>
+                        <div style={{ flexGrow: 0 }}>
+                            <Link to="/book/create">
+                                <IconButton>
+                                    <AddIcon />
+                                </IconButton>
+                            </Link>
+                        </div>
+                    </div>
+                </>
+            )}
+        </>
+    );
+}
+
+export default Books;
