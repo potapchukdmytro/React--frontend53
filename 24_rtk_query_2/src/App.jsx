@@ -22,6 +22,7 @@ import UpdateBook from "./pages/books/UpdateBook";
 import { useDispatch } from "react-redux";
 import { getCookie } from "./services/cookieService";
 import { login } from "./store/slices/auth/authSlice";
+import Galery from "./pages/galery/Galery";
 
 function App() {
     const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
                     <Route path="weather" element={<Weather />} />
                     <Route path="news" element={<News />} />
                     <Route path="login" element={<Login />} />
+                    <Route path="galery" element={<Galery />} />
                     <Route path="movies" element={<Movies />} />
                     <Route path="movie/:imdbId" element={<MovieDetail />} />
                     <Route path="balance" element={<UserBalance />} />

@@ -30,6 +30,7 @@ function Navbar() {
                     <Link to="/news" className="nav-link">Новини</Link>
                     <Link to="/cats" className="nav-link">Фото котиків</Link>
                     <Link to="/movies" className="nav-link">Фільми</Link>
+                    <Link to="/galery" className="nav-link">Галерея</Link>
                 </div>
                 <div>
                 {
