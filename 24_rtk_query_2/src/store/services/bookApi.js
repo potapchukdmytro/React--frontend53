@@ -4,7 +4,7 @@ import { env } from "./../../env";
 export const bookApi = createApi({
     reducerPath: "booksApi",
     baseQuery: fetchBaseQuery({ baseUrl: env.apiUrl }),
-    tagTypes: ["Books"],
+    tagTypes: ["Books", "Book"],
     endpoints: (build) => ({
         // отримання книг
         getBooks: build.query({
@@ -13,6 +13,13 @@ export const bookApi = createApi({
                 params: params
             }),
             providesTags: ["Books"],
+        }),
+        // Отримання книги по id
+        getBook: build.query({
+            query: (id) => ({
+                url: `books/${id}`
+            }),
+            providesTags: ["Book"]
         }),
         // додавання нової книги
         createBook: build.mutation({
@@ -30,7 +37,7 @@ export const bookApi = createApi({
                 method: "PUT",
                 body: data,
             }),
-            invalidatesTags: ["Books"],
+            invalidatesTags: ["Books", "Book"],
         }),
         // видалення книги
         deleteBook: build.mutation({
@@ -38,12 +45,13 @@ export const bookApi = createApi({
                 url: `books/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: ["Books"],
+            invalidatesTags: ["Books", "Book"],
         }),
     }),
 });
 
 export const {
+    useGetBookQuery,
     useGetBooksQuery,
     useCreateBookMutation,
     useUpdateBookMutation,
