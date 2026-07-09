@@ -6,13 +6,15 @@ export const bookApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: env.apiUrl }),
     tagTypes: ["Books"],
     endpoints: (build) => ({
+        // отримання книг
         getBooks: build.query({
             query: (params) => ({
-                url: "books",
-                params: params,
+                url: `books`,
+                params: params
             }),
             providesTags: ["Books"],
         }),
+        // додавання нової книги
         createBook: build.mutation({
             query: (data) => ({
                 url: "books",
@@ -21,6 +23,7 @@ export const bookApi = createApi({
             }),
             invalidatesTags: ["Books"],
         }),
+        // редагування книги
         updateBook: build.mutation({
             query: (data) => ({
                 url: "books",
@@ -29,6 +32,7 @@ export const bookApi = createApi({
             }),
             invalidatesTags: ["Books"],
         }),
+        // видалення книги
         deleteBook: build.mutation({
             query: (id) => ({
                 url: `books/${id}`,

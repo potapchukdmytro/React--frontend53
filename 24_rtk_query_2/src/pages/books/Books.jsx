@@ -10,7 +10,7 @@ import { useGetBooksQuery } from "../../store/services/bookApi";
 function Books() {
     const [page, setPage] = useState(1);
 
-    const { data, isLoading, isSuccess, isError } = useGetBooksQuery({page_size: 120});
+    const { data, isLoading, isSuccess, isError } = useGetBooksQuery({page: page, page_size: 20});
 
     function paginationChangeHandler(event, value) {
         setPage(value);
@@ -19,8 +19,6 @@ function Books() {
             behavior: "smooth",
         });
     }
-
-    useEffect(() => {}, [page]);
 
     // Спінер
     if (isLoading) {
@@ -70,7 +68,7 @@ function Books() {
                             <Pagination
                                 color="warning"
                                 page={page}
-                                count={20}
+                                count={data.payload.total_pages}
                                 onChange={paginationChangeHandler}
                             />
                         </div>
