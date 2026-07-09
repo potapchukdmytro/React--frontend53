@@ -6,6 +6,7 @@ import Spiner from "../../components/spiner/Spiner";
 import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router";
 import { useGetBooksQuery } from "../../store/services/bookApi";
+import { Helmet } from "react-helmet-async";
 
 function Books() {
     const [page, setPage] = useState(1);
@@ -38,6 +39,10 @@ function Books() {
         <>
             {isSuccess && (
                 <>
+                    <Helmet>
+                        <title>Каталог книг</title>
+                        <meta name="description" content="Книги по доступній ціні"></meta>
+                    </Helmet>
                     <div
                         style={{
                             margin: "16px 0px",

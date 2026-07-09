@@ -14,6 +14,7 @@ import { login } from "../../store/slices/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { setCookie } from "../../services/cookieService";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const fieldsGroup = {
     display: "flex",
@@ -125,6 +126,9 @@ function Login() {
     return (
         <GoogleOAuthProvider clientId={env.googleClientId}>
             <div>
+                <Helmet>
+                    <title>Вхід</title>
+                </Helmet>
                 <h1>Вхід</h1>
                 <form
                     action="/login"

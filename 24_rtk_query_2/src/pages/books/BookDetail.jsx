@@ -20,6 +20,8 @@ import {
     useDeleteBookMutation,
     useGetBookQuery,
 } from "../../store/services/bookApi";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { Helmet } from "react-helmet-async";
 
 function BookDetail() {
     const { id } = useParams();
@@ -110,6 +112,9 @@ function BookDetail() {
                         justifyContent: "center",
                     }}
                 >
+                    <Helmet>
+                        <title>{`${book.title} ${book.author ? `- ${book.author.name}` : ""}`}</title>
+                    </Helmet>
                     <div style={{ textAlign: "right" }}>
                         <img
                             src={book.image}

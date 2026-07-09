@@ -6,13 +6,16 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")).render(
     <ThemeProvider theme={createTheme({ palette: { mode: "dark" } })}>
-        <Provider store={store}>
-            <BrowserRouter>
+        <HelmetProvider>
+            <Provider store={store}>
+                <BrowserRouter>
                     <App />
-            </BrowserRouter>
-        </Provider>
+                </BrowserRouter>
+            </Provider>
+        </HelmetProvider>
     </ThemeProvider>,
 );
