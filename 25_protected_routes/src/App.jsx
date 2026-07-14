@@ -19,21 +19,36 @@ import UserBalance from "./pages/userBalance/UserBalance";
 import UpdateBook from "./pages/dashboard/books/UpdateBook";
 import CreateBook from "./pages/dashboard/books/CreateBook";
 import { ToastContainer, Flip } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { getCookie } from "./services/cookieService";
+import { useDispatch, useSelector } from "react-redux";
+import { getCookie, removeCookie } from "./services/cookieService";
 import { login } from "./store/slices/auth/authSlice";
 import Galery from "./pages/galery/Galery";
 import Dashboard from "./pages/dashboard/Dashboard";
 import BooksTable from "./pages/dashboard/books/BooksTable";
+import { api } from "./api";
 
 function App() {
     const dispatch = useDispatch();
+    const { isAuth, user } = useSelector((state) => state.auth);
+
+    async function AuthorizationUser() {
+        const token = getCookie("ujta");
+        if (token) {
+            try {
+                const response = await api.post("auth/validate", token);
+                if(response.status == 200) {
+                    dispatch(login(token));
+                } else {
+                    removeCookie("ujta");
+                }
+            } catch (error) {
+                removeCookie("ujta");
+            }
+        }
+    }
 
     useEffect(() => {
-        const token = getCookie("ujta");
-        if(token) {
-            dispatch(login(token));
-        }
+        AuthorizationUser();
     }, []);
 
     return (
@@ -52,17 +67,20 @@ function App() {
                     <Route path="movies" element={<Movies />} />
                     <Route path="movie/:imdbId" element={<MovieDetail />} />
                     <Route path="balance" element={<UserBalance />} />
-                    
                     // Dashboard routes
-                    <Route path="dashboard">
-                        <Route index element={<Dashboard />} />
-                        <Route path="books">
-                            <Route index element={<BooksTable />}/>
-                            <Route path="update/:id" element={<UpdateBook />}/>
-                            <Route path="create" element={<CreateBook />}/>
+                    {isAuth && user?.role == "admin" && (
+                        <Route path="dashboard">
+                            <Route index element={<Dashboard />} />
+                            <Route path="books">
+                                <Route index element={<BooksTable />} />
+                                <Route
+                                    path="update/:id"
+                                    element={<UpdateBook />}
+                                />
+                                <Route path="create" element={<CreateBook />} />
+                            </Route>
                         </Route>
-                    </Route>
-
+                    )}
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
