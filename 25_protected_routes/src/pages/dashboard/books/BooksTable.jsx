@@ -7,7 +7,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useGetBooksQuery } from "../../../store/services/bookApi";
+import {
+    useGetBooksQuery,
+    useDeleteBookMutation,
+} from "../../../store/services/bookApi";
 import Spiner from "../../../components/spiner/Spiner";
 import defaultImage from "./../../../assets/defaultBook.png";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -16,6 +19,8 @@ import AddIcon from "@mui/icons-material/Add";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet-async";
+import DeleteModal from "../../../components/modals/DeleteModal";
+import { toast } from "react-toastify";
 
 function NewBookButton() {
     return (
@@ -41,6 +46,7 @@ function BooksTable() {
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(50);
 
+    const [deleteBook] = useDeleteBookMutation();
     const { data, isLoading, isError, isSuccess } = useGetBooksQuery({
         page: page,
         page_size: pageSize,
@@ -53,6 +59,29 @@ function BooksTable() {
     const handleChangeRowsPerPage = (event) => {
         setPageSize(event.target.value);
         setPage(1);
+    };
+
+    // delete book
+    async function handleDeleteBook(id) {
+        const res = await deleteBook(id);
+        if (res.data.success) {
+            toast.success("Книгу успішно видалено");
+        } else {
+            toast.error("Не вдалося видалити книгу");
+        }
+    }
+
+    const notify = (id) => {
+        toast(
+            (props) => (
+                <DeleteModal deleteCallback={() => handleDeleteBook(id)} {...props} />
+            ),
+            {
+                closeButton: false,
+                ariaLabel: "Delete book",
+                position: "bottom-center",
+            },
+        );
     };
 
     function imageError(event) {
@@ -134,7 +163,7 @@ function BooksTable() {
                                             </IconButton>
                                         </Link>
                                         <br />
-                                        <IconButton size="small">
+                                        <IconButton size="small" onClick={() => notify(book.id)}>
                                             <DeleteIcon
                                                 fontSize="small"
                                                 color="error"

@@ -31,6 +31,8 @@ function Navbar() {
                     <Link to="/cats" className="nav-link">Фото котиків</Link>
                     <Link to="/movies" className="nav-link">Фільми</Link>
                     <Link to="/galery" className="nav-link">Галерея</Link>
+                    {/* Admin */}
+                    <Link to="/dashboard" className="nav-link">Керування</Link>
                 </div>
                 <div>
                 {

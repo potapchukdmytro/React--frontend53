@@ -4,20 +4,15 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { Link, useNavigate, useParams } from "react-router";
 import NotFound from "../notFound/NotFound";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import EditIcon from "@mui/icons-material/Edit";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import Spiner from "../../components/spiner/Spiner";
 import defaultImg from "./../../assets/defaultBook.png";
-import { toast } from "react-toastify";
-import DeleteModal from "../../components/modals/DeleteModal";
 import { useAction } from "./../../hooks/useAction";
 import { api } from "../../api";
 import {
-    useDeleteBookMutation,
     useGetBookQuery,
 } from "../../store/services/bookApi";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
@@ -27,7 +22,6 @@ function BookDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
-    const [deleteBook] = useDeleteBookMutation();
     const { data, isLoading, isError, isSuccess } = useGetBookQuery(id);
 
     function switchFavorite() {
@@ -50,30 +44,6 @@ function BookDetail() {
             }
         }
     }
-
-    // delete book
-    async function handleDeleteBok() {
-        const res = await deleteBook(id);
-        if (res.data.success) {
-            toast.success("Книгу успішно видалено");
-            navigate("/", { replace: true });
-        } else {
-            toast.error("Не вдалося видалити книгу");
-        }
-    }
-
-    const notify = () => {
-        toast(
-            (props) => (
-                <DeleteModal deleteCallback={handleDeleteBok} {...props} />
-            ),
-            {
-                closeButton: false,
-                ariaLabel: "Delete book",
-                position: "bottom-center",
-            },
-        );
-    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -199,11 +169,6 @@ function BookDetail() {
                             style={{ maxWidth: "400px", whiteSpace: "normal" }}
                         >
                             <p>{book.description}</p>
-                        </div>
-                        <div style={{ marginTop: "64px", textAlign: "right" }}>
-                            <IconButton onClick={notify}>
-                                <DeleteIcon fontSize="large" color="error" />
-                            </IconButton>
                         </div>
                     </div>
                 </div>
