@@ -16,13 +16,15 @@ import BookDetail from "./pages/books/BookDetail";
 import Movies from "./pages/movies/Movies";
 import MovieDetail from "./pages/movies/MovieDetail";
 import UserBalance from "./pages/userBalance/UserBalance";
-import CreateBook from "./pages/books/CreateBook";
+import UpdateBook from "./pages/dashboard/books/UpdateBook";
+import CreateBook from "./pages/dashboard/books/CreateBook";
 import { ToastContainer, Flip } from "react-toastify";
-import UpdateBook from "./pages/books/UpdateBook";
 import { useDispatch } from "react-redux";
 import { getCookie } from "./services/cookieService";
 import { login } from "./store/slices/auth/authSlice";
 import Galery from "./pages/galery/Galery";
+import Dashboard from "./pages/dashboard/Dashboard";
+import BooksTable from "./pages/dashboard/books/BooksTable";
 
 function App() {
     const dispatch = useDispatch();
@@ -42,8 +44,6 @@ function App() {
                     <Route index element={<Books />} />
                     {/* :id - url параметер */}
                     <Route path="book/:id" element={<BookDetail />} />
-                    <Route path="book/update/:id" element={<UpdateBook />} />
-                    <Route path="book/create" element={<CreateBook />} />
                     <Route path="cats" element={<CatsPage />} />
                     <Route path="weather" element={<Weather />} />
                     <Route path="news" element={<News />} />
@@ -52,16 +52,18 @@ function App() {
                     <Route path="movies" element={<Movies />} />
                     <Route path="movie/:imdbId" element={<MovieDetail />} />
                     <Route path="balance" element={<UserBalance />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
+                    
+                    // Dashboard routes
+                    <Route path="dashboard">
+                        <Route index element={<Dashboard />} />
+                        <Route path="books">
+                            <Route index element={<BooksTable />}/>
+                            <Route path="update/:id" element={<UpdateBook />}/>
+                            <Route path="create" element={<CreateBook />}/>
+                        </Route>
+                    </Route>
 
-                {/* Admin routes */}
-                <Route path="/admin" element={<AdminLayout />}>
-                    <Route index element={<h1>Dashboard</h1>} />
-                    <Route path="books" element={<h1>Test books</h1>} />
-                    <Route path="authors" element={<h1>Test authors</h1>} />
-                    <Route path="users" element={<h1>Test users</h1>} />
-                    <Route path="roles" element={<h1>Test roles</h1>} />
+                    <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
 

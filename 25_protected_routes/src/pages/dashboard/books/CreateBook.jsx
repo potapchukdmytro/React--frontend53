@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
-import { useAction } from "../../hooks/useAction";
-import { useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
+import { useAction } from "../../../hooks/useAction";
+import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import Spiner from "../../components/spiner/Spiner";
+import Spiner from "../../../components/spiner/Spiner";
 import { toast } from "react-toastify";
-import { api } from "../../api";
-import { useUpdateBookMutation } from "../../store/services/bookApi";
+import { useCreateBookMutation } from "../../../store/services/bookApi";
+import { Helmet } from "react-helmet-async";
 
 const fieldsGroup = {
     display: "flex",
@@ -51,67 +51,63 @@ const errorStyle = {
     lineHeight: "20px",
 };
 
-function UpdateBook() {
-    const [book, setBook] = useState(null);
+function CreateBook() {
     const navigate = useNavigate();
     const { loadAuthors } = useAction();
-    const { authors, isLoading, isLoaded } = useSelector(
-        (state) => state.author,
-    );
+    const {
+        authors,
+        isLoading: authorsLoading,
+        isLoaded,
+    } = useSelector((state) => state.author);
 
-    const [updateBook] = useUpdateBookMutation();
-
-    const { id } = useParams();
-
-    const formik = useFormik({
-        initialValues: {
-            title: book?.title || "",
-            description: book?.description || "",
-            image: book?.image || "",
-            rating: book?.rating || "0",
-            price: book?.price || 0,
-            numberOfPages: book?.number_of_pages || 0,
-            publishDate: book?.publish_date || 0,
-            authorId: book?.author ? book?.author.id : 0 || 0,
-        },
-        onSubmit: submitHandler,
-        enableReinitialize: true,
-    });
-
-    async function fetchBook() {
-        try {
-            const response = await api.get(`books/${id}`);
-            const { data } = response;
-            setBook(data.payload);
-        } catch (error) {
-            navigate("/", { replace: "true" });
-        }
-    }
+    const [createBook] = useCreateBookMutation();
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
         loadAuthors();
-        fetchBook();
     }, []);
 
-    async function submitHandler(values) {        
-        const res = await updateBook({...values, id: id});
-        
-        if (res.data.success) {
-            toast.success("Книгу успішно змінено");
-            navigate(-1);
-        } else {
-            toast.error("Помилка під час редагування книги");
+    async function submitHandler(values) {
+        try {
+            // unwrap - говорить rtk викинути помилку на ззовні що дає змогу краще її обробити власним try catch
+            const res = await createBook(values).unwrap();
+            if (res.data.success) {
+                toast.success("Книга успішно додана");
+                navigate("/");
+            } else {
+                toast.error("Помилка під час додавання книги");
+            }
+        } catch (error) {
+            toast.error("Помилка під час додавання книги");
         }
     }
 
-    if (isLoading || !book) {
+    const initValues = {
+        title: "",
+        description: "",
+        image: "",
+        rating: "0",
+        price: 0,
+        numberOfPages: 0,
+        publishDate: 0,
+        authorId: 0,
+    };
+
+    const formik = useFormik({
+        initialValues: initValues,
+        onSubmit: submitHandler,
+    });
+
+    if (authorsLoading) {
         return <Spiner />;
     }
 
     return (
         <div>
-            <h1>Редагування книги</h1>
+            <Helmet>
+                <title>Додавання книги</title>
+            </Helmet>
+            <h1>Додавання книги</h1>
             <form
                 onSubmit={formik.handleSubmit}
                 style={{
@@ -234,11 +230,11 @@ function UpdateBook() {
                 </div>
 
                 <div style={{ margin: "15px 0px" }}>
-                    <input style={submitStyle} type="submit" value="Зберегти" />
+                    <input style={submitStyle} type="submit" value="Додати" />
                 </div>
             </form>
         </div>
     );
 }
 
-export default UpdateBook;
+export default CreateBook;

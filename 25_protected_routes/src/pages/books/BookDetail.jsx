@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import Spiner from "../../components/spiner/Spiner";
-import defaultImg from "./default.png";
+import defaultImg from "./../../assets/defaultBook.png";
 import { toast } from "react-toastify";
 import DeleteModal from "../../components/modals/DeleteModal";
 import { useAction } from "./../../hooks/useAction";
@@ -201,14 +201,6 @@ function BookDetail() {
                             <p>{book.description}</p>
                         </div>
                         <div style={{ marginTop: "64px", textAlign: "right" }}>
-                            <Link to={`/book/update/${id}`}>
-                                <IconButton>
-                                    <EditIcon
-                                        fontSize="large"
-                                        color="success"
-                                    />
-                                </IconButton>
-                            </Link>
                             <IconButton onClick={notify}>
                                 <DeleteIcon fontSize="large" color="error" />
                             </IconButton>

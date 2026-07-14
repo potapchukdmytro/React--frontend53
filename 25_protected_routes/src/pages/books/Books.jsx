@@ -77,13 +77,6 @@ function Books() {
                                 onChange={paginationChangeHandler}
                             />
                         </div>
-                        <div style={{ flexGrow: 0 }}>
-                            <Link to="/book/create">
-                                <IconButton>
-                                    <AddIcon />
-                                </IconButton>
-                            </Link>
-                        </div>
                     </div>
                 </>
             )}
