@@ -33,9 +33,15 @@ function App() {
 
     async function AuthorizationUser() {
         const token = getCookie("ujta");
-        if (token) {
+        
+        if (token) {            
             try {
-                const response = await api.post("auth/validate", token);
+                const response = await api.post("auth/validate", token, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                
                 if(response.status == 200) {
                     dispatch(login(token));
                 } else {
