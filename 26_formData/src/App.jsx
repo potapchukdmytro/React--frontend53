@@ -26,6 +26,8 @@ import Galery from "./pages/galery/Galery";
 import Dashboard from "./pages/dashboard/Dashboard";
 import BooksTable from "./pages/dashboard/books/BooksTable";
 import { api } from "./api";
+import TracksTable from "./pages/dashboard/tracks/TracksTable";
+import CreateTrack from "./pages/dashboard/tracks/CreateTrack";
 
 function App() {
     const dispatch = useDispatch();
@@ -77,6 +79,7 @@ function App() {
                     {isAuth && user?.role == "admin" && (
                         <Route path="dashboard">
                             <Route index element={<Dashboard />} />
+                            {/* books */}
                             <Route path="books">
                                 <Route index element={<BooksTable />} />
                                 <Route
@@ -84,6 +87,12 @@ function App() {
                                     element={<UpdateBook />}
                                 />
                                 <Route path="create" element={<CreateBook />} />
+                            </Route>
+
+                            {/* tracks */}
+                            <Route path="tracks">
+                                <Route index element={<TracksTable />} />
+                                <Route path="create" element={<CreateTrack />} />
                             </Route>
                         </Route>
                     )}

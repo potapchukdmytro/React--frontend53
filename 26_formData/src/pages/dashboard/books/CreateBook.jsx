@@ -73,7 +73,7 @@ function CreateBook() {
             const res = await createBook(values).unwrap();
             if (res.data.success) {
                 toast.success("Книга успішно додана");
-                navigate("/");
+                navigate("/dashboard/books");
             } else {
                 toast.error("Помилка під час додавання книги");
             }

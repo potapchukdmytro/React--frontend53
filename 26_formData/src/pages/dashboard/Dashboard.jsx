@@ -13,6 +13,11 @@ function Dashboard() {
                     Книги
                 </Button>
             </Link>
+            <Link to="tracks">
+                <Button variant="contained" color="secondary">
+                    Плейлист
+                </Button>
+            </Link>
         </>
     );
 }
