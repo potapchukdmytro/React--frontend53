@@ -1,0 +1,10 @@
+.nav-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #9ca3af;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: #d8d8d8;
+}
