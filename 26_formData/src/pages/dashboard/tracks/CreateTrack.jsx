@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Spiner from "../../../components/spiner/Spiner";
 import { toast } from "react-toastify";
@@ -51,6 +51,7 @@ const errorStyle = {
 };
 
 function CreateTrack() {
+    const [audio, setAudio] = useState(null);
     const navigate = useNavigate();
 
     const [createTrack] = useCreateTrackMutation();
@@ -65,6 +66,10 @@ function CreateTrack() {
 
             for (const key in values) {
                 data.append(key, values[key]);
+            }
+
+            if(audio) {
+                data.append("file", audio);
             }
 
             // unwrap - говорить rtk викинути помилку на ззовні що дає змогу краще її обробити власним try catch
@@ -93,7 +98,10 @@ function CreateTrack() {
     });
 
     function uploadTrackHandler(event) {
-        console.log(event);
+        const files = event.target.files;
+        if (files && files.length > 0) {
+            setAudio(files[0]);
+        }
     }
 
     return (
@@ -166,8 +174,20 @@ function CreateTrack() {
                         Завантажити аудіо
                     </label>
 
-                    <input onChange={uploadTrackHandler} id="track" type="file" hidden accept="audio/*" />
+                    <input
+                        onChange={uploadTrackHandler}
+                        id="track"
+                        type="file"
+                        hidden
+                        accept="audio/*"
+                    />
                 </div>
+
+                {audio && (
+                    <div>
+                        <span>{audio.name}</span>
+                    </div>
+                )}
 
                 <div style={{ margin: "15px 0px" }}>
                     <input style={submitStyle} type="submit" value="Додати" />
