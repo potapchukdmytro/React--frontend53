@@ -77,7 +77,7 @@ function CreateTrack() {
 
             if (res.success) {
                 toast.success("Трек успішно доданий");
-                // navigate("/dashboard/tracks");
+                navigate("/dashboard/tracks");
             } else {
                 toast.error("Помилка під час додавання треку");
             }
